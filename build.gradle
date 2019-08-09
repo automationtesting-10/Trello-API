@@ -11,6 +11,23 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'gradle.cucumber', 'src/test/resources']
+        }
+    }
+}
+
 dependencies {
     testCompile 'io.cucumber:cucumber-java:4.3.1'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
