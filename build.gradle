@@ -41,4 +41,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
     testCompile 'io.rest-assured:rest-assured:4.0.0'
+
+    // https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis
+    compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.2'
 }
