@@ -1,6 +1,9 @@
 package com.foundation.trello.model;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -84,7 +87,8 @@ public class ReadConfigurationTest {
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
                 post("/1/boards/").
-                then().assertThat().statusCode(200);
+                then().assertThat().statusCode(200).log().all().
+                extract().response();
     }
 
     @Test
@@ -95,8 +99,23 @@ public class ReadConfigurationTest {
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
-                delete("/1/boards/jVLf29ab").
+                delete("/1/boards/AdPLEOdq").
                 then().assertThat().statusCode(200).
+                extract().response();
+    }
+
+    @Test
+    public void postRequest2() {
+
+        RestAssured.baseURI = "https://api.trello.com";
+        given().
+                auth().
+                oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+                queryParams("name", "Testeando3").
+                contentType(ContentType.JSON).
+                when().
+                post("/1/boards/").
+                then().assertThat().statusCode(200).log().all().
                 extract().response();
     }
 }
