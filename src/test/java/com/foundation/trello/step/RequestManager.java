@@ -1,8 +1,15 @@
 package com.foundation.trello.step;
 
 import com.foundation.trello.model.ReadConfiguration;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.Map;
+
+import static io.restassured.RestAssured.given;
+import static io.restassured.http.ContentType.JSON;
 
 /**
  * RequestManager class.
@@ -13,27 +20,80 @@ import io.restassured.specification.RequestSpecification;
 public class RequestManager {
 
     private RequestSpecification request;
-    private Response response;
-    private String method;
-    private String endpoint;
     private String baseUrl;
+    private String consumerKey;
+    private String consumerSecret;
+    private String accessToken;
+    private String tokenSecret;
 
     private ReadConfiguration reader = new ReadConfiguration();
 
 
-    public RequestManager(String method, String endpoint) {
-        this.method = method;
-        this.endpoint = endpoint;
-        initAuthentication();
+    public RequestManager() {
+        consumerKey = reader.readConfigurationFile("consumerKey");
+        consumerSecret = reader.readConfigurationFile("consumerSecret");
+        accessToken = reader.readConfigurationFile("accessToken");
+        tokenSecret = reader.readConfigurationFile("tokenSecret");
+        request = new RequestSpecBuilder().setAuth(RestAssured.oauth(consumerKey, consumerSecret, accessToken, tokenSecret)).build();
     }
 
-    private void initAuthentication() {
-        String consumerKey = reader.readConfigurationFile("consumerKey");
-        String consumerSecret = reader.readConfigurationFile("consumerSecret");
-        String accessToken = reader.readConfigurationFile("accessToken");
-        String tokenSecret = reader.readConfigurationFile("tokenSecret");
-        request.given().auth().oauth(consumerKey, consumerSecret, accessToken, tokenSecret);
+    public Response getRequest(final String endpoint) {
+        baseUrl = reader.readConfigurationFile("urlBase");
+        String uri = baseUrl.concat(endpoint);
+        Response response =
+                given().
+                        spec(request).
+                when().
+                    get(uri).
+                then().
+                extract().
+                    response();
+        return response;
     }
 
+    public Response deleteRequest(final String endpoint) {
+        baseUrl = reader.readConfigurationFile("urlBase");
+        String uri = baseUrl.concat(endpoint);
+        Response response =
+                given().
+                    spec(request).
+                when().
+                    delete(uri).
+                then().
+                    extract().
+                        response();
+        return response;
+    }
 
+    public Response postRequest(final String endpoint, final Map<String, Object> data) {
+        baseUrl = reader.readConfigurationFile("urlBase");
+        String uri = baseUrl.concat(endpoint);
+        Response response =
+                given().
+                    spec(request).
+                    contentType(JSON).
+                    body(data).
+                when().
+                    post(uri).
+                then().
+                    extract().
+                        response();
+        return response;
+    }
+
+    public Response putRequest(final String endpoint, final Map<String, Object> data) {
+        baseUrl = reader.readConfigurationFile("urlBase");
+        String uri = baseUrl.concat(endpoint);
+        Response response =
+                given().
+                    spec(request).
+                    contentType(JSON).
+                    body(data).
+                when().
+                    put(uri).
+                then().
+                    extract().
+                        response();
+        return response;
+    }
 }

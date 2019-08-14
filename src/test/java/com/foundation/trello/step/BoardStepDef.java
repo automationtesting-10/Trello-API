@@ -3,6 +3,7 @@ package com.foundation.trello.step;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.response.Response;
 
 /**
  * BoardStepDef class.
@@ -12,10 +13,12 @@ import cucumber.api.java.en.When;
  */
 public class BoardStepDef {
 
-    @Given("I set up a {string} request to {string} endpoint")
-    public void i_set_up_a_request_to_endpoint(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    RequestManager request = new RequestManager();
+
+    @Given("I set up a GET request to {string} endpoint")
+    public void i_set_up_a_request_to_endpoint( String string2) {
+        Response response = request.getRequest(string2);
+        System.out.println(response.body() + "----response");
     }
 
     @When("I send the request")
