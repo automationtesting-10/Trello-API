@@ -7,7 +7,6 @@
  */
 
 plugins {
-
     // Apply the java-library plugin to add support for Java Library.
     id 'java'
     id 'java-library'
@@ -28,42 +27,7 @@ repositories {
     mavenCentral()
 }
 
-// CheckStyle Configuration.
-checkstyle {
-    toolVersion = '8.1'
-}
-
-// FindBugs configuration.
-findbugs {
-    toolVersion = '3.0.1'
-}
-tasks.withType(FindBugs) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-// PMD Configuration.
-pmd {
-    toolVersion = '5.8.1'
-}
-
-tasks.withType(Pmd) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-test {
-    testLogging {
-        events 'PASSED', 'STARTED', 'FAILED', 'SKIPPED'
-    }
-}
-
 // Cucumber Configuration Task.
-
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
@@ -83,7 +47,6 @@ task cucumber() {
 
 // Dependencies.
 dependencies {
-    testImplementation 'junit:junit:4.12'
     testCompile 'io.cucumber:cucumber-java:4.3.1'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
     compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.1'
@@ -122,11 +85,5 @@ tasks.withType(Pmd) {
     reports {
         xml.enabled = false
         html.enabled = true
-    }
-}
-
-test {
-    testLogging {
-        events 'PASSED', 'STARTED', 'FAILED', 'SKIPPED'
     }
 }
