@@ -7,6 +7,7 @@
  */
 
 plugins {
+
     // Apply the java-library plugin to add support for Java Library.
     id 'java'
     id 'java-library'
@@ -82,6 +83,7 @@ task cucumber() {
 
 // Dependencies.
 dependencies {
+    testImplementation 'junit:junit:4.12'
     testCompile 'io.cucumber:cucumber-java:4.3.1'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
     compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.1'
@@ -94,4 +96,37 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
     testCompile 'io.rest-assured:rest-assured:4.0.0'
+}
+
+checkstyle {
+    toolVersion = '8.1'
+}
+
+// FindBugs configuration
+findbugs {
+    toolVersion = '3.0.1'
+}
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+// PMD Configuration
+pmd {
+    toolVersion = '5.8.1'
+}
+
+tasks.withType(Pmd) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events 'PASSED', 'STARTED', 'FAILED', 'SKIPPED'
+    }
 }
