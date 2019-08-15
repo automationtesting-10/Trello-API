@@ -3,9 +3,11 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.ReadConfiguration;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -34,17 +36,17 @@ public class RequestManager {
         consumerSecret = reader.readConfigurationFile("consumerSecret");
         accessToken = reader.readConfigurationFile("accessToken");
         tokenSecret = reader.readConfigurationFile("tokenSecret");
-        request = new RequestSpecBuilder().setAuth(RestAssured.oauth(consumerKey, consumerSecret, accessToken, tokenSecret)).build();
+        baseUrl = reader.readConfigurationFile("urlBase");
+        request = new RequestSpecBuilder().setAuth(RestAssured.oauth(consumerKey, consumerSecret, accessToken, tokenSecret)).setBaseUri(baseUrl).build();
     }
 
     public Response getRequest(final String endpoint) {
-        baseUrl = reader.readConfigurationFile("urlBase");
-        String uri = baseUrl.concat(endpoint);
+
         Response response =
                 given().
                         spec(request).
                 when().
-                    get(uri).
+                    get(endpoint).
                 then().
                 extract().
                     response();
@@ -52,13 +54,11 @@ public class RequestManager {
     }
 
     public Response deleteRequest(final String endpoint) {
-        baseUrl = reader.readConfigurationFile("urlBase");
-        String uri = baseUrl.concat(endpoint);
         Response response =
                 given().
                     spec(request).
                 when().
-                    delete(uri).
+                    delete(endpoint).
                 then().
                     extract().
                         response();
@@ -66,15 +66,13 @@ public class RequestManager {
     }
 
     public Response postRequest(final String endpoint, final Map<String, Object> data) {
-        baseUrl = reader.readConfigurationFile("urlBase");
-        String uri = baseUrl.concat(endpoint);
         Response response =
                 given().
                     spec(request).
                     contentType(JSON).
                     body(data).
                 when().
-                    post(uri).
+                    post(endpoint).
                 then().
                     extract().
                         response();
@@ -82,15 +80,13 @@ public class RequestManager {
     }
 
     public Response putRequest(final String endpoint, final Map<String, Object> data) {
-        baseUrl = reader.readConfigurationFile("urlBase");
-        String uri = baseUrl.concat(endpoint);
         Response response =
                 given().
                     spec(request).
                     contentType(JSON).
                     body(data).
                 when().
-                    put(uri).
+                    put(endpoint).
                 then().
                     extract().
                         response();
