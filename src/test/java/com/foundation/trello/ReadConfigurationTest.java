@@ -22,15 +22,7 @@ public class ReadConfigurationTest {
     private String tokenSecret = reader.readConfigurationFile("tokenSecret");
 
     /**
-     * This method setup the uri.
-     */
-    @Before
-    public void setUp() {
-
-    }
-
-    /**
-     * This test verify that the consumerKey is correct get of the properties file.
+     * This test verifies that the consumerKey is correct get of the properties file.
      */
     @Test
     public void readConfigurationFileConsumerKey() {
@@ -50,7 +42,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * This test verify that the accessToken is correct get of the properties file.
+     * This test verifies that the accessToken is correct get of the properties file.
      */
     @Test
     public void readConfigurationFileAccessToken() {
@@ -60,7 +52,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * This test verify that the tokenSecret is correct get of the properties file.
+     * This test verifies that the tokenSecret is correct get of the properties file.
      */
     @Test
     public void readConfigurationFileTokenSecret() {
@@ -70,7 +62,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * This test verify that the GET return a state 200.
+     * This test verifies that the GET return a state 200.
      */
     @Test
     public void getRequest() {
@@ -84,7 +76,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * This test verify that the PUT return a state 200.
+     * This test verifies that the PUT return a state 200.
      */
     @Test
     public void putRequestName() {
@@ -99,7 +91,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * This test verify that the POST return a state 200.
+     * This test verifies that the POST return a state 200.
      */
     @Test
     public void postRequestWithMap() {
@@ -115,7 +107,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * this test verify that the DELETE return a state 200.
+     * This test verifies that the DELETE return a state 200.
      */
     @Test
     public void deleteRequest() {
@@ -129,7 +121,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * this test verify that the POST return a state 200.
+     * This test verifies that the POST return a state 200.
      */
     @Test
     public void postRequestWithQueryParams() {
