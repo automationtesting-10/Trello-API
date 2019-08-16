@@ -15,7 +15,6 @@ import static io.restassured.http.ContentType.JSON;
  * This class is used for testing of ReadConfiguration class.
  */
 public class ReadConfigurationTest {
-
     private ReadConfiguration reader = ReadConfiguration.getInstance();
     private String consumerKey = reader.getConsumerKey();
     private String consumerSecret = reader.getConsumerSecret();

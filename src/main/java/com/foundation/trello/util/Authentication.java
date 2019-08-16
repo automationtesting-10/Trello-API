@@ -15,7 +15,7 @@ public final class Authentication {
     private RequestSpecification request;
 
     /**
-     * This is constructor that init variables.
+     * This is constructor that initializes variables.
      */
     private Authentication() {
         ReadConfiguration reader = ReadConfiguration.getInstance();
@@ -26,10 +26,10 @@ public final class Authentication {
         String baseUrl = reader.getUrlBase();
         request = new RequestSpecBuilder().setAuth(RestAssured.oauth(consumerKey, consumerSecret,
                 accessToken, tokenSecret)).setBaseUri(baseUrl).build();
-
     }
 
     /**
+     * Gives the class instance according Singleton pattern.
      * @return an instance.
      */
     public static Authentication getInstance() {
@@ -40,6 +40,7 @@ public final class Authentication {
     }
 
     /**
+     * Gives the request specification resultant of oauth.
      * @return an request specification.
      */
     public RequestSpecification getRequestSpecification() {

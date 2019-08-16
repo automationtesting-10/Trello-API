@@ -12,11 +12,10 @@ import io.restassured.response.Response;
  * @version 0.0.1
  */
 public class BoardStepDef {
-
     private RequestManager request = new RequestManager();
 
     /**
-     * @param endpoint the endpoint parameter define a input endpoint.
+     * @param endpoint the endpoint parameter defines a input endpoint.
      */
     @Given("I set up a GET request to {string} endpoint")
     public void iSetUpRequestToEndpoint(String endpoint) {
@@ -25,7 +24,7 @@ public class BoardStepDef {
     }
 
     /**
-     *  This method send request.
+     *  This method sends request.
      */
     @When("I send the request")
     public void iSendTheRequest() {
@@ -34,7 +33,7 @@ public class BoardStepDef {
     }
 
     /**
-     * @param status The status parameter define input status.
+     * @param status The status parameter defines input status.
      */
     @Then("I get a {string} status code as response")
     public void iGetStatusCodeAsResponse(String status) {

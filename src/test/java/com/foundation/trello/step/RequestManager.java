@@ -19,7 +19,7 @@ public class RequestManager {
     private RequestSpecification request = Authentication.getInstance().getRequestSpecification();
 
     /**
-     * @param endpoint the endpoint parameter define a input string.
+     * @param endpoint the endpoint parameter defines a input string.
      * @return a response.
      */
     public Response getRequest(final String endpoint) {
@@ -51,8 +51,8 @@ public class RequestManager {
     }
 
     /**
-     * @param endpoint The endpoint parameter define a input string.
-     * @param data The data parameter define a input map object.
+     * @param endpoint The endpoint parameter defines a input string.
+     * @param data The data parameter defines a input map object.
      * @return a response.
      */
     public Response postRequest(final String endpoint, final Map<String, Object> data) {
@@ -70,8 +70,8 @@ public class RequestManager {
     }
 
     /**
-     * @param endpoint The endpoint parameter define a input string.
-     * @param data The data parameter define a input map object.
+     * @param endpoint The endpoint parameter defines a input string.
+     * @param data The data parameter defines a input map object.
      * @return a response.
      */
     public Response putRequest(final String endpoint, final Map<String, Object> data) {
