@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * This class read the config.properties file.
+ * This class reads the config.properties file.
  *
  * @author Andres Burgos
  */

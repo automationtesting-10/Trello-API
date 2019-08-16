@@ -1,6 +1,5 @@
 package com.foundation.trello;
 
-import cucumber.api.java.Before;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,9 +9,8 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-
 /**
- * This class is use for testing of ReadConfiguration class.
+ * This class is used for testing of ReadConfiguration class.
  */
 public class ReadConfigurationTest {
     private ReadConfiguration reader = new ReadConfiguration();
@@ -32,7 +30,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * This test verify that the consumerSecret is correct get of the properties file.
+     * This test verifies that the consumerSecret is correct get of the properties file.
      */
     @Test
     public void readConfigurationFileConsumerSecret() {
