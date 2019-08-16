@@ -5,26 +5,41 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * This class reads the config.properties file.
+ *
+ * @author Andres Burgos
+ */
 public class ReadConfiguration {
     private static ReadConfiguration readConfiguration;
     private static Properties properties;
+    InputStream inputProperties;
 
     private ReadConfiguration() {
         properties = readConfigurationFile();
     }
 
+    /**
+     * @return the values the key.
+     */
     private Properties readConfigurationFile() {
-        InputStream inputProperties;
-        properties = new Properties();
+
         try {
             inputProperties = new FileInputStream("config.properties");
             properties.load(inputProperties);
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                inputProperties.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
         return properties;
     }
 
+    /**
+     * @return an instance.
+     */
     public static ReadConfiguration getInstance() {
         if (readConfiguration == null) {
             readConfiguration = new ReadConfiguration();
@@ -32,23 +47,38 @@ public class ReadConfiguration {
         return readConfiguration;
     }
 
-    public String getConsumerKey(){
+    /**
+     * @return consumerKey.
+     */
+    public String getConsumerKey() {
         return properties.getProperty("consumerKey");
     }
 
-    public String getConsumerSecret (){
+    /**
+     * @return consumerSecret.
+     */
+    public String getConsumerSecret() {
         return properties.getProperty("consumerSecret");
     }
 
-    public String getAccessToken(){
+    /**
+     * @return accessToken.
+     */
+    public String getAccessToken() {
         return properties.getProperty("accessToken");
     }
 
-    public String getTokenSecret(){
+    /**
+     * @return tokenSecret.
+     */
+    public String getTokenSecret() {
         return properties.getProperty("tokenSecret");
     }
 
-    public String getUrlBase(){
+    /**
+     * @return urlBase.
+     */
+    public String getUrlBase() {
         return properties.getProperty("urlBase");
     }
 }
