@@ -1,13 +1,9 @@
 package com.foundation.trello.step;
 
-import com.foundation.trello.model.ReadConfiguration;
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.common.mapper.TypeRef;
+import com.foundation.trello.util.Authentication;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -20,28 +16,9 @@ import static io.restassured.http.ContentType.JSON;
  * @version 0.0.1
  */
 public class RequestManager {
-
-    private RequestSpecification request;
-    private String baseUrl;
-    private String consumerKey;
-    private String consumerSecret;
-    private String accessToken;
-    private String tokenSecret;
-
-    private ReadConfiguration reader = new ReadConfiguration();
-
-
-    public RequestManager() {
-        consumerKey = reader.readConfigurationFile("consumerKey");
-        consumerSecret = reader.readConfigurationFile("consumerSecret");
-        accessToken = reader.readConfigurationFile("accessToken");
-        tokenSecret = reader.readConfigurationFile("tokenSecret");
-        baseUrl = reader.readConfigurationFile("urlBase");
-        request = new RequestSpecBuilder().setAuth(RestAssured.oauth(consumerKey, consumerSecret, accessToken, tokenSecret)).setBaseUri(baseUrl).build();
-    }
+    private RequestSpecification request = Authentication.getInstance().getRequestSpecification();
 
     public Response getRequest(final String endpoint) {
-
         Response response =
                 given().
                         spec(request).

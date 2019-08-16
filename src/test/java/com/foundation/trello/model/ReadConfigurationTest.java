@@ -1,5 +1,6 @@
 package com.foundation.trello.model;
 
+import com.foundation.trello.util.ReadConfiguration;
 import io.restassured.RestAssured;
 import org.testng.Assert;
 import org.testng.annotations.Test;
