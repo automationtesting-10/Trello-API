@@ -11,16 +11,24 @@ import java.util.Properties;
  * @author Andres Burgos
  */
 public class ReadConfiguration {
-    private static final String CONFIG_FILE = "config.properties";
+    private InputStream inputProperties;
+    private Properties properties = new Properties();
+
     /**
      * @param value The value parameter defines the key input.
      * @return the values the key.
      */
-    public String readConfigurationFile(String value) throws IOException {
-        Properties properties = new Properties();
-        InputStream inputProperties = new FileInputStream(CONFIG_FILE);
-        properties.load(inputProperties);
-        inputProperties.close();
+    public String readConfigurationFile(String value) {
+        try {
+            inputProperties = new FileInputStream("config.properties");
+            properties.load(inputProperties);
+        } catch (IOException e) {
+            try {
+                inputProperties.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
         return properties.getProperty(value);
     }
 }
