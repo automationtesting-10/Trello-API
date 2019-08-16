@@ -4,11 +4,19 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
-public class Authentication {
+/**
+ * This class is used for authentication.
+ *
+ * @author Andres Burgos
+ */
+public final class Authentication {
 
     private static Authentication oauth;
     private RequestSpecification request;
 
+    /**
+     * This is constructor that init variables.
+     */
     private Authentication() {
         ReadConfiguration reader = ReadConfiguration.getInstance();
         String consumerKey = reader.getConsumerKey();
@@ -21,13 +29,19 @@ public class Authentication {
 
     }
 
-    public static Authentication getInstance(){
+    /**
+     * @return an instance.
+     */
+    public static Authentication getInstance() {
         if (oauth == null) {
             oauth = new Authentication();
         }
         return oauth;
     }
 
+    /**
+     * @return an request specification.
+     */
     public RequestSpecification getRequestSpecification() {
         return request;
     }

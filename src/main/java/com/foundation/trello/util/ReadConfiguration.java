@@ -10,11 +10,14 @@ import java.util.Properties;
  *
  * @author Andres Burgos
  */
-public class ReadConfiguration {
+public final class ReadConfiguration {
     private static ReadConfiguration readConfiguration;
-    private static Properties properties;
-    InputStream inputProperties;
+    private Properties properties;
+    private InputStream inputProperties;
 
+    /**
+     * This is constructor for init variables.
+     */
     private ReadConfiguration() {
         properties = readConfigurationFile();
     }
@@ -47,6 +50,12 @@ public class ReadConfiguration {
         return readConfiguration;
     }
 
+    /**
+     * @return properties.
+     */
+    public Properties getProperties() {
+        return properties;
+    }
     /**
      * @return consumerKey.
      */

@@ -13,22 +13,31 @@ import io.restassured.response.Response;
  */
 public class BoardStepDef {
 
-    RequestManager request = new RequestManager();
+    private RequestManager request = new RequestManager();
 
+    /**
+     * @param endpoint the endpoint parameter define a input endpoint.
+     */
     @Given("I set up a GET request to {string} endpoint")
-    public void i_set_up_a_request_to_endpoint( String string2) {
-        Response response = request.getRequest(string2);
+    public void iSetUpRequestToEndpoint(String endpoint) {
+        Response response = request.getRequest(endpoint);
         System.out.println(response.body() + "----response");
     }
 
+    /**
+     *  This method send request.
+     */
     @When("I send the request")
-    public void i_send_the_request() {
+    public void iSendTheRequest() {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
 
+    /**
+     * @param status The status parameter define input status.
+     */
     @Then("I get a {string} status code as response")
-    public void i_get_a_status_code_as_response(String string) {
+    public void iGetStatusCodeAsResponse(String status) {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
