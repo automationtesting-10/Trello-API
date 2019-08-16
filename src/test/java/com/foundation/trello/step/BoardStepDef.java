@@ -20,7 +20,6 @@ public class BoardStepDef {
     @Given("I set up a GET request to {string} endpoint")
     public void iSetUpRequestToEndpoint(String endpoint) {
         Response response = request.getRequest(endpoint);
-        System.out.println(response.body() + "----response");
     }
 
     /**

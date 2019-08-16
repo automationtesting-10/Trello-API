@@ -35,7 +35,8 @@ public class RequestManager {
     }
 
     /**
-     * @param endpoint the endpoint parameter define a input string.
+     * Executes delete request for a defined endpoint.
+     * @param endpoint the endpoint parameter defines a input string.
      * @return a response.
      */
     public Response deleteRequest(final String endpoint) {
@@ -51,6 +52,7 @@ public class RequestManager {
     }
 
     /**
+     *
      * @param endpoint The endpoint parameter defines a input string.
      * @param data The data parameter defines a input map object.
      * @return a response.
@@ -70,6 +72,7 @@ public class RequestManager {
     }
 
     /**
+     * Executes put request for a defined endpoint.
      * @param endpoint The endpoint parameter defines a input string.
      * @param data The data parameter defines a input map object.
      * @return a response.

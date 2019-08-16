@@ -52,12 +52,14 @@ public final class ReadConfiguration {
     }
 
     /**
+     * Gives the properties read from config.properties file.
      * @return properties.
      */
     public Properties getProperties() {
         return properties;
     }
     /**
+     * Gives the consumerKey property read from config.properties file.
      * @return consumerKey.
      */
     public String getConsumerKey() {
@@ -65,6 +67,7 @@ public final class ReadConfiguration {
     }
 
     /**
+     * Gives the consumerKey property read from config.properties file.
      * @return consumerSecret.
      */
     public String getConsumerSecret() {
@@ -72,6 +75,7 @@ public final class ReadConfiguration {
     }
 
     /**
+     * Gives the accessToken property read from config.properties file.
      * @return accessToken.
      */
     public String getAccessToken() {
@@ -79,6 +83,7 @@ public final class ReadConfiguration {
     }
 
     /**
+     * Gives the tokenSecret property read from config.properties file.
      * @return tokenSecret.
      */
     public String getTokenSecret() {
@@ -86,6 +91,7 @@ public final class ReadConfiguration {
     }
 
     /**
+     * Gives the urlBase property read from config.properties file.
      * @return urlBase.
      */
     public String getUrlBase() {

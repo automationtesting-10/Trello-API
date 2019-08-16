@@ -87,7 +87,8 @@ public class ReadConfigurationTest {
                 param("name", "HelloWorld").log().all().
                 when().
                 put("https://api.trello.com/1/boards/9reOdft6").
-                then().assertThat().statusCode(200).log().all().
+                then().
+                assertThat().statusCode(200).log().all().
                 extract().response();
     }
 
@@ -103,7 +104,8 @@ public class ReadConfigurationTest {
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
                 post("https://api.trello.com/1/boards/").
-                then().assertThat().statusCode(200);
+                then().
+                assertThat().statusCode(200);
     }
 
     /**
@@ -116,7 +118,8 @@ public class ReadConfigurationTest {
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
                 delete("https://api.trello.com/1/boards/jVLf29ab").
-                then().assertThat().statusCode(404).
+                then().
+                assertThat().statusCode(404).
                 extract().response();
     }
 
@@ -132,7 +135,8 @@ public class ReadConfigurationTest {
                 contentType(ContentType.JSON).
                 when().
                 post("https://api.trello.com/1/boards/").
-                then().assertThat().statusCode(200).log().all().
+                then().
+                assertThat().statusCode(200).log().all().
                 extract().response();
     }
 }
