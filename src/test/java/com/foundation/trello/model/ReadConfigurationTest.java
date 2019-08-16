@@ -13,11 +13,11 @@ import static io.restassured.http.ContentType.JSON;
 
 public class ReadConfigurationTest {
 
-    ReadConfiguration reader = new ReadConfiguration();
-    String consumerKey = reader.readConfigurationFile("consumerKey");
-    String consumerSecret = reader.readConfigurationFile("consumerSecret");
-    String accessToken = reader.readConfigurationFile("accessToken");
-    String tokenSecret = reader.readConfigurationFile("tokenSecret");
+    ReadConfiguration reader = ReadConfiguration.getInstance();
+    String consumerKey = reader.getConsumerKey();
+    String consumerSecret = reader.getConsumerSecret();
+    String accessToken = reader.getAccessToken();
+    String tokenSecret = reader.getTokenSecret();
 
     @Test
     public void readConfigurationFile_consumerKey(){
@@ -97,7 +97,7 @@ public class ReadConfigurationTest {
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
                 delete("/1/boards/jVLf29ab").
-                then().assertThat().statusCode(200).
+                then().assertThat().statusCode(404).
                 extract().response();
     }
 }
