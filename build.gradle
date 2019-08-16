@@ -58,7 +58,6 @@ dependencies {
     compile group: 'io.rest-assured', name: 'rest-assured', version: '4.0.0'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
-
     // https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis
     compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.2'
 }
