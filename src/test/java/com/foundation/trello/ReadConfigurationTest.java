@@ -70,7 +70,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * this test verify that the GET return a state 200.
+     * This test verify that the GET return a state 200.
      */
     @Test
     public void getRequest() {
@@ -84,7 +84,7 @@ public class ReadConfigurationTest {
     }
 
     /**
-     * this test verify that the PUT return a state 200.
+     * This test verify that the PUT return a state 200.
      */
     @Test
     public void putRequestName() {
