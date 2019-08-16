@@ -2,6 +2,7 @@ package com.foundation.trello.util;
 
 import com.foundation.trello.model.Board;
 import com.foundation.trello.model.Card;
+import com.foundation.trello.model.List;
 import com.google.gson.Gson;
 
 /**
@@ -22,10 +23,10 @@ public abstract class JsonConverter {
         switch (type) {
             case "Board":
                 return gson.fromJson(json, Board.class);
+            case "List":
+                return gson.fromJson(json, List.class);
             case "Card":
                 return gson.fromJson(json, Card.class);
-            case "Other":
-                return gson.fromJson(json, Other.class);
             default:
                 return null;
         }
