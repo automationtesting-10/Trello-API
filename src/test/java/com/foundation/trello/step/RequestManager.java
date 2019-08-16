@@ -34,6 +34,12 @@ public class RequestManager {
 
     private ReadConfiguration reader = new ReadConfiguration();
 
+    private Board board;
+
+    public RequestManager(Board board) {
+        this.board = board;
+    }
+
 
     public RequestManager() {
         consumerKey = reader.readConfigurationFile("consumerKey");
@@ -99,12 +105,14 @@ public class RequestManager {
 
     @Test
     public void test_GETAlbumsById1_ShouldBeTitle_quidem_molestiae_enim() {
-        Board board =
+        Response response =
                 given().
                     spec(request).
                 when().
-                    get("/boards/9reOdft6").
-                as(Board.class);
+                    get("/boards/9reOdft6");
+        board = response.body().as(Board.class);
+        System.out.println(board.getName() + ": NAME");
         Assert.assertEquals("HelloWorld", board.getName());
+
     }
 }

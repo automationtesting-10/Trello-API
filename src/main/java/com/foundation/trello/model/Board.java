@@ -20,6 +20,10 @@ public class Board {
      private Prefs prefs;
      private LabelNames labelNames;
 
+    public Board(String name) {
+        this.name = name;
+    }
+
     public String getId() {
         return id;
     }
