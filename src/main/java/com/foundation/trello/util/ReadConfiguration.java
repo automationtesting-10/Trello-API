@@ -29,6 +29,7 @@ public final class ReadConfiguration {
 
         try {
             inputProperties = new FileInputStream("config.properties");
+            properties = new Properties();
             properties.load(inputProperties);
         } catch (IOException e) {
             try {
