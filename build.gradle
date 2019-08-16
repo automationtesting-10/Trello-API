@@ -60,6 +60,7 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
     // https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis
     compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.2'
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
 }
 
 checkstyle {

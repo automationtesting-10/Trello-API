@@ -1,0 +1,42 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2019-08-16T20:41:26.703Z",
+        "line": 3,
+        "name": "Read a board by id",
+        "description": "",
+        "id": "acceptance-test-of-\"board\"--crud-s(create--read--update-and-delete);read-a-board-by-id",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2215343700,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set up a GET request to \"/boards/9reOdft6\" endpoint",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"/boards/9reOdft6\"",
+                  "offset": 26
+                }
+              ],
+              "location": "BoardStepDef.iSetUpRequestToEndpoint(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      }
+    ],
+    "name": "Acceptance test of \"board\", CRUD\u0027s(Create, Read, Update and Delete)",
+    "description": "",
+    "id": "acceptance-test-of-\"board\"--crud-s(create--read--update-and-delete)",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/feature/board.feature",
+    "tags": []
+  }
+]
