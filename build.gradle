@@ -44,4 +44,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis
     compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.2'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer
+    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '4.7.1'
 }

@@ -1,15 +1,19 @@
 package com.foundation.trello.step;
 
+import com.foundation.trello.model.Board;
 import com.foundation.trello.model.ReadConfiguration;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Map;
 
+import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 
@@ -91,5 +95,16 @@ public class RequestManager {
                     extract().
                         response();
         return response;
+    }
+
+    @Test
+    public void test_GETAlbumsById1_ShouldBeTitle_quidem_molestiae_enim() {
+        Board board =
+                given().
+                    spec(request).
+                when().
+                    get("/boards/9reOdft6").
+                as(Board.class);
+        Assert.assertEquals("HelloWorld", board.getName());
     }
 }
