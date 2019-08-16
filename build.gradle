@@ -23,7 +23,7 @@ sourceCompatibility = 1.8
 // In this section you declare where to find the dependencies of your project.
 repositories {
     // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    // You can declare any Maven/Iv/file repository here.
     mavenCentral()
 }
 
@@ -59,6 +59,9 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
     testCompile 'io.rest-assured:rest-assured:4.0.0'
+
+    // https://mvnrepository.com/artifact/com.github.scribejava/scribejava-apis
+    compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.2'
 }
 
 checkstyle {
