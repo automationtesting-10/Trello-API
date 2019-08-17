@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 /**
  * Implements JsonConverter abstract class which is used to convert json records in DB.
  *
- * @author Melissa Román
+ * @author Andres Burgos, Josue Rodriguez
  * @version 1.0
  */
 public abstract class JsonConverter {
