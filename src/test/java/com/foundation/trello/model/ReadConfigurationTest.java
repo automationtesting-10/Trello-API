@@ -131,8 +131,7 @@ public class ReadConfigurationTest {
         given().
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
-                queryParams("name", "Testeando3").
-                contentType(ContentType.JSON).
+                queryParams("name", "Testeando3").                contentType(ContentType.JSON).
                 when().
                 post("https://api.trello.com/1/boards/").
                 then().
