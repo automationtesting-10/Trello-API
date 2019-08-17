@@ -1,7 +1,7 @@
 package com.foundation.trello.model;
 
 /**
- * This class job with JsonConvert class.
+ * This class works with JsonConvert class.
  * @author Andres Burgos
  */
 public class List {

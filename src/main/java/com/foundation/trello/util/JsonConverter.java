@@ -6,7 +6,7 @@ import com.foundation.trello.model.List;
 import com.google.gson.Gson;
 
 /**
- * Implements JsonConverter abstract class which is used to convert json records in DB.
+ * This JsonConverter class is used for convert a Json in object.
  *
  * @author Andres Burgos, Josue Rodriguez
  * @version 1.0
