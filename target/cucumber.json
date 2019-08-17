@@ -3,7 +3,7 @@
     "line": 1,
     "elements": [
       {
-        "start_timestamp": "2019-08-16T20:41:26.703Z",
+        "start_timestamp": "2019-08-17T14:53:52.372Z",
         "line": 3,
         "name": "Read a board by id",
         "description": "",
@@ -13,7 +13,7 @@
         "steps": [
           {
             "result": {
-              "duration": 2215343700,
+              "duration": 5412705450,
               "status": "passed"
             },
             "line": 4,
