@@ -2,21 +2,19 @@ package com.foundation.trello.step;
 
 import com.foundation.trello.util.Authentication;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
-import gherkin.deps.com.google.gson.JsonObject;
+import cucumber.api.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
-import org.json.JSONObject;
 
 import static io.restassured.RestAssured.given;
 
 public class ListAcceptanceStepDef {
     RequestSpecification requestSpecification;
     String endpoint = null;
-    JSONObject bodyJson;
+    //JSONObject bodyJson;
     String json = null;
     Response response;
 
@@ -28,7 +26,7 @@ public class ListAcceptanceStepDef {
 
     @Given("I set up the data:")
     public void i_set_up_the_data(String paramName) {
-        bodyJson = new JSONObject(paramName);
+        //bodyJson = new JSONObject(paramName);
         this.json = paramName;
     }
 
@@ -47,6 +45,6 @@ public class ListAcceptanceStepDef {
     }
 
     @Then("Sent Data should be the same info of the response")
-    public void sent_data_should_be_the_same_info_of_the_response(){
+    public void sent_data_should_be_the_same_info_of_the_response() {
     }
 }
