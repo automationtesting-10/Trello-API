@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.json.JSONObject;
 import org.testng.Assert;
 
 import static io.restassured.RestAssured.given;
@@ -26,7 +27,7 @@ public class ListAcceptanceStepDef {
 
     @Given("I set up the data:")
     public void i_set_up_the_data(String paramName) {
-        //bodyJson = new JSONObject(paramName);
+        bodyJson = new JSONObject(paramName);
         this.json = paramName;
     }
 
