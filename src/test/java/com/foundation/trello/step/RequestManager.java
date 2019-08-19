@@ -1,10 +1,9 @@
 package com.foundation.trello.step;
 
 import com.foundation.trello.util.Authentication;
+
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -16,78 +15,79 @@ import static io.restassured.http.ContentType.JSON;
  * @version 0.0.1
  */
 public class RequestManager {
-    private RequestSpecification request = Authentication.getInstance().getRequestSpecification();
+
+    private RequestSpecification request;
+    private String endPoint;
+    private String data;
+    private String method;
 
     /**
-     * @param endpoint the endpoint parameter defines a input string.
-     * @return a response.
+     *
      */
-    public Response getRequest(final String endpoint) {
-        Response response =
-                given().
-                        spec(request).
-                        when().
-                        get(endpoint).
-                        then().
-                        extract().
-                        response();
-        return response;
-    }
-
-    /**
-     * Executes delete request for a defined endpoint.
-     * @param endpoint the endpoint parameter defines a input string.
-     * @return a response.
-     */
-    public Response deleteRequest(final String endpoint) {
-        Response response =
-                given().
-                        spec(request).
-                        when().
-                        delete(endpoint).
-                        then().
-                        extract().
-                        response();
-        return response;
+    public RequestManager(String method, String endPoint) {
+        request = Authentication.getInstance().getRequestSpecification();
+        this.method = method;
+        this.endPoint = endPoint;
+        data = "";
     }
 
     /**
      *
-     * @param endpoint The endpoint parameter defines a input string.
-     * @param data The data parameter defines a input map object.
-     * @return a response.
+     * @param endPoint
      */
-    public Response postRequest(final String endpoint, final Map<String, Object> data) {
-        Response response =
-                given().
-                        spec(request).
-                        contentType(JSON).
-                        body(data).
-                        when().
-                        post(endpoint).
-                        then().
-                        extract().
-                        response();
-        return response;
+    public void setEndPoint(String endPoint) {
+        this.endPoint = endPoint;
     }
 
     /**
-     * Executes put request for a defined endpoint.
-     * @param endpoint The endpoint parameter defines a input string.
-     * @param data The data parameter defines a input map object.
-     * @return a response.
+     *
+     * @param data
      */
-    public Response putRequest(final String endpoint, final Map<String, Object> data) {
-        Response response =
-                given().
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    /**
+     *
+     * @param method
+     */
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Response makeRequest() {
+        if (method.compareTo("POST") == 0) {
+            return given().
+                    spec(request).
+                    contentType(JSON).
+                    body(data).
+                    when().
+                    get(endPoint);
+        } else {
+            if (method.compareTo("GET") == 0) {
+                return given().
                         spec(request).
-                        contentType(JSON).
-                        body(data).
                         when().
-                        put(endpoint).
-                        then().
-                        extract().
-                        response();
-        return response;
+                        get(endPoint);
+            } else {
+                if (method.compareTo("Put") == 0) {
+                    return given().
+                            spec(request).
+                            contentType(JSON).
+                            body(data).
+                            when().
+                            put(endPoint);
+                } else {
+                    return given().
+                            spec(request).
+                            when().
+                            get(endPoint);
+                }
+            }
+        }
     }
 }
