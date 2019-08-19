@@ -7,10 +7,6 @@ Feature: Acceptance test of "list", only Create
         {
           "id": "5d5a0d89e6a38889fae28c63",
           "name": "List1",
-          "closed": false,
-          "idBoard": "5d5a0d2fb868e0188cde9b8d",
-          "pos": 16384,
-          "limits": {}
         }
       """
     When I sent the request

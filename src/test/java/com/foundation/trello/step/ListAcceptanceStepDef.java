@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class ListAcceptanceStepDef {
     RequestSpecification requestSpecification;
     String endpoint = null;
-    //JSONObject bodyJson;
+    JSONObject bodyJson;
     String json = null;
     Response response;
 
@@ -37,7 +37,7 @@ public class ListAcceptanceStepDef {
 
     @Then("I get a {int} status code as response")
     public void i_get_a_status_code_as_response(int status) {
-        Assert.assertEquals(status, response.getStatusCode());
+        Assert.assertEquals(response.getStatusCode(),status);
     }
 
     @Then("I verify the list schema")
