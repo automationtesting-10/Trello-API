@@ -1,4 +1,4 @@
-package com.foundation.trello.step;
+package com.foundation.trello.model;
 
 import com.foundation.trello.util.Authentication;
 
@@ -66,7 +66,7 @@ public class RequestManager {
                     contentType(JSON).
                     body(data).
                     when().
-                    get(endPoint);
+                    post(endPoint);
         } else {
             if (method.compareTo("GET") == 0) {
                 return given().
@@ -74,7 +74,7 @@ public class RequestManager {
                         when().
                         get(endPoint);
             } else {
-                if (method.compareTo("Put") == 0) {
+                if (method.compareTo("PUT") == 0) {
                     return given().
                             spec(request).
                             contentType(JSON).
@@ -85,7 +85,7 @@ public class RequestManager {
                     return given().
                             spec(request).
                             when().
-                            get(endPoint);
+                            delete(endPoint);
                 }
             }
         }
