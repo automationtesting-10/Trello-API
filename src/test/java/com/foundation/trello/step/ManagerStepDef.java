@@ -1,5 +1,7 @@
 package com.foundation.trello.step;
 
+import com.foundation.trello.model.Board;
+import com.foundation.trello.model.Context;
 import com.foundation.trello.model.RequestManager;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,6 +18,17 @@ import org.testng.Assert;
 public class ManagerStepDef {
     private RequestManager requestManager;
     private Response response;
+    private Context context;
+    private Board board;
+
+    /**
+     *
+     * @param context
+     */
+    public ManagerStepDef(Context context) {
+        this.context = context;
+        this.board = context.getBoard();
+    }
     @Given("I create a {string} request to {string} endpoint")
     public void i_create_a_request_to_endpoint(String method, String endPoint) {
         requestManager = new RequestManager(method, endPoint);
@@ -29,6 +42,9 @@ public class ManagerStepDef {
     @When("I sent the request")
     public void i_sent_the_request() {
         response = requestManager.makeRequest();
+        String idBoard = response.body().jsonPath().get("id");
+        System.out.println("id_board: " + idBoard);
+        board.setId(idBoard);
     }
 
     @Then("I get a {int} status code as response")
