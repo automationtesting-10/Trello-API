@@ -1,5 +1,6 @@
 package com.foundation.trello.step;
 
+import com.foundation.trello.util.Log;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,6 +21,7 @@ public class BoardStepDef {
     @Given("I set up a GET request to {string} endpoint")
     public void iSetUpRequestToEndpoint(String endpoint) {
         Response response = request.getRequest(endpoint);
+        Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
     /**

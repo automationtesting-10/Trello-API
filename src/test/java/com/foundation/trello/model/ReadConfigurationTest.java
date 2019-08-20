@@ -16,7 +16,10 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 
 /**
- * This class is used for testing of ReadConfiguration class.
+ * This class is used for testing 'ReadConfiguration' class.
+ *
+ * @author Maday Alcalá Cuba.
+ * @version 0.0.1
  */
 public class ReadConfigurationTest {
     private ReadConfiguration reader = ReadConfiguration.getInstance();
@@ -26,12 +29,19 @@ public class ReadConfigurationTest {
     private String tokenSecret = reader.getTokenSecret();
     private Response response;
 
+    /**
+     * This method is executed before each method.
+     */
     @BeforeMethod
-    public void LoggersInit() {
-        Log.getInstance().getLog().info("Iniciando Test " );
+    public void loggersInit() {
+        Log.getInstance().getLog().info("Iniciando Test ");
     }
+
+    /**
+     * This method is executed after each method.
+     */
     @AfterMethod
-    public void LoggersFinal() {
+    public void loggersFinal() {
         Log.getInstance().getLog().info("Finalizando Test ");
     }
 
@@ -88,7 +98,7 @@ public class ReadConfigurationTest {
                         get("https://api.trello.com/1/boards/9reOdft6").
                         then().assertThat().statusCode(200).log().all(true).
                         extract().response();
-        Log.getInstance().getLog().info("El status code correcto es: "+response.getStatusCode());
+        Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
     /**
@@ -105,6 +115,7 @@ public class ReadConfigurationTest {
                 then().
                 assertThat().statusCode(200).log().all().
                 extract().response();
+        Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
     /**
@@ -121,6 +132,7 @@ public class ReadConfigurationTest {
                 post("https://api.trello.com/1/boards/").
                 then().
                 assertThat().statusCode(200).extract().response();
+        Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
     /**
@@ -137,6 +149,7 @@ public class ReadConfigurationTest {
                 then().
                 assertThat().statusCode(404).log().all().
                 extract().response();
+        Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
     /**
@@ -154,5 +167,6 @@ public class ReadConfigurationTest {
                 then().
                 assertThat().statusCode(200).log().all().
                 extract().response();
+        Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 }
