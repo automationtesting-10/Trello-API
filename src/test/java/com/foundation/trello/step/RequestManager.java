@@ -73,6 +73,7 @@ public class RequestManager {
 
     /**
      * Executes put request for a defined endpoint.
+     * 
      * @param endpoint The endpoint parameter defines a input string.
      * @param data The data parameter defines a input map object.
      * @return a response.

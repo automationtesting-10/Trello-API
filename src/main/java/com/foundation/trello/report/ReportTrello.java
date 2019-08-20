@@ -1,12 +1,13 @@
 package com.foundation.trello.report;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.foundation.trello.util.Log;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import net.masterthought.cucumber.Reportable;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ReportTrello class.
@@ -42,5 +43,6 @@ public class ReportTrello {
         final ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);
         // and here validate 'result' to decide what to do if report has failed.
         final Reportable result = reportBuilder.generateReports();
+        Log.getInstance().getLog().info(result);
     }
 }
