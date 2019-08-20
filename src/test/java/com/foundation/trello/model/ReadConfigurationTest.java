@@ -142,7 +142,6 @@ public class ReadConfigurationTest {
      */
     @Test
     public void deleteRequest() {
-
         response =
                 given().
                     auth().
