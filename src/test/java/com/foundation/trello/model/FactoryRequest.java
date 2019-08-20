@@ -7,7 +7,6 @@ package com.foundation.trello.model;
  * @version 0.0.1
  */
 public final class FactoryRequest {
-
     public static final String MESSAGE_FOR_UNKNOWN_METHOD = "Unknown method type";
 
     /**
