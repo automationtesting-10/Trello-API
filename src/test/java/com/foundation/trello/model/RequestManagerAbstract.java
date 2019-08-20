@@ -11,7 +11,6 @@ import io.restassured.specification.RequestSpecification;
  * @version 0.0.1
  */
 public abstract class RequestManagerAbstract {
-    private RequestSpecification request;
     private String endPoint;
     private String data;
     private String method;

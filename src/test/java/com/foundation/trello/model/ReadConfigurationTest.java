@@ -18,7 +18,7 @@ import static io.restassured.http.ContentType.JSON;
 /**
  * This class is used for testing 'ReadConfiguration' class.
  *
- * @author Maday Alcalá Cuba.
+ * @author Maday Alcala Cuba.
  * @version 0.0.1
  */
 public class ReadConfigurationTest {

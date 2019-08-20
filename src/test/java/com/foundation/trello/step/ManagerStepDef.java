@@ -19,7 +19,6 @@ import org.testng.Assert;
 public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
-    private Context context;
     private Board board;
 
     /**
@@ -28,7 +27,6 @@ public class ManagerStepDef {
      * @param context The context parameter defines the input context.
      */
     public ManagerStepDef(Context context) {
-        this.context = context;
         this.board = context.getBoard();
     }
 
