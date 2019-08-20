@@ -30,6 +30,7 @@ public final class Authentication {
 
     /**
      * Gives the class instance according Singleton pattern.
+     *
      * @return an instance.
      */
     public static Authentication getInstance() {
@@ -41,6 +42,7 @@ public final class Authentication {
 
     /**
      * Gives the request specification resultant of oauth.
+     *
      * @return an request specification.
      */
     public RequestSpecification getRequestSpecification() {
