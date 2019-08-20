@@ -11,11 +11,8 @@ import org.apache.log4j.PropertyConfigurator;
  * @version 0.0.1
  */
 public final class Log {
-
     private static final String LOG4J_PROPERTIES = "src/main/resources/log4j.properties";
-
     private static Log instance = null;
-
     private static Logger log = Logger.getLogger(Log.class);
 
     /**
@@ -26,7 +23,9 @@ public final class Log {
     }
 
     /**
-     * This method returns a log instance.
+     * This method ensures that only one instance is created according
+     * to the builder pattern and returns a log instance.
+     *
      * @return an 'instance'.
      */
     public static Log getInstance() {
@@ -40,9 +39,10 @@ public final class Log {
 
     /**
      * This method returns a 'log' with which more loggers can be added.
+     *
      * @return a 'log'.
      */
-    public org.apache.log4j.Logger getLog() {
+    public Logger getLog() {
         return log;
     }
 }
