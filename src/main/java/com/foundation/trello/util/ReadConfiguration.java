@@ -1,7 +1,6 @@
 package com.foundation.trello.util;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -31,12 +30,13 @@ public final class ReadConfiguration {
             inputProperties = new FileInputStream("config.properties");
             properties = new Properties();
             properties.load(inputProperties);
-        } catch (IOException e) {
+        } catch (Exception e) {
             try {
                 inputProperties.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            } catch (Exception ex) {
+                Log.getInstance().getLog().error("Ops! this don't work", ex);
             }
+            Log.getInstance().getLog().error("Ops! bad work", e);
         }
         return properties;
     }

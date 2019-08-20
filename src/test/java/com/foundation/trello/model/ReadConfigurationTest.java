@@ -1,8 +1,12 @@
 package com.foundation.trello.model;
 
+import com.foundation.trello.util.Log;
 import com.foundation.trello.util.ReadConfiguration;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -20,6 +24,16 @@ public class ReadConfigurationTest {
     private String consumerSecret = reader.getConsumerSecret();
     private String accessToken = reader.getAccessToken();
     private String tokenSecret = reader.getTokenSecret();
+    private Response response;
+
+    @BeforeMethod
+    public void LoggersInit() {
+        Log.getInstance().getLog().info("Iniciando Test " );
+    }
+    @AfterMethod
+    public void LoggersFinal() {
+        Log.getInstance().getLog().info("Finalizando Test ");
+    }
 
     /**
      * This test verifies that the consumerKey is correct get of the properties file.
@@ -66,14 +80,15 @@ public class ReadConfigurationTest {
      */
     @Test
     public void getRequest() {
-        given().
+        response = given().
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 //param("actions", "all").log().all().
                         when().
-                get("https://api.trello.com/1/boards/9reOdft6").
-                then().assertThat().statusCode(200).log().all().
-                extract().response();
+                        get("https://api.trello.com/1/boards/9reOdft6").
+                        then().assertThat().statusCode(200).log().all(true).
+                        extract().response();
+        Log.getInstance().getLog().info("El status code correcto es: "+response.getStatusCode());
     }
 
     /**
@@ -81,7 +96,7 @@ public class ReadConfigurationTest {
      */
     @Test
     public void putRequestName() {
-        given().
+        response = given().
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 param("name", "HelloWorld").log().all().
@@ -99,13 +114,13 @@ public class ReadConfigurationTest {
     public void postRequest() {
         Map<String, Object> mymap = new HashMap<String, Object>();
         mymap.put("name", "Testeando");
-        given().contentType(JSON).body(mymap).
+        response = given().contentType(JSON).body(mymap).
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
                 post("https://api.trello.com/1/boards/").
                 then().
-                assertThat().statusCode(200);
+                assertThat().statusCode(200).extract().response();
     }
 
     /**
@@ -113,13 +128,14 @@ public class ReadConfigurationTest {
      */
     @Test
     public void deleteRequest() {
-        given().
+
+        response = given().
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
                 delete("https://api.trello.com/1/boards/jVLf29ab").
                 then().
-                assertThat().statusCode(404).
+                assertThat().statusCode(404).log().all().
                 extract().response();
     }
 
@@ -128,7 +144,7 @@ public class ReadConfigurationTest {
      */
     @Test
     public void postRequestWithQueryParams() {
-        given().
+        response = given().
                 auth().
                 oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 queryParams("name", "Testeando3").
