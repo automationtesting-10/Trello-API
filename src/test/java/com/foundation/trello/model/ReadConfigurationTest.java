@@ -90,14 +90,14 @@ public class ReadConfigurationTest {
      */
     @Test
     public void getRequest() {
-        response = given().
-                auth().
-                oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
-                //param("actions", "all").log().all().
-                        when().
-                        get("https://api.trello.com/1/boards/9reOdft6").
-                        then().assertThat().statusCode(200).log().all(true).
-                        extract().response();
+        response =
+                given().
+                    auth().
+                    oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+                when().
+                    get("https://api.trello.com/1/boards/9reOdft6").
+                then().
+                    assertThat().statusCode(200).log().all(true).extract().response();
         Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
@@ -106,15 +106,15 @@ public class ReadConfigurationTest {
      */
     @Test
     public void putRequestName() {
-        response = given().
-                auth().
-                oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
-                param("name", "HelloWorld").log().all().
+        response =
+                given().
+                    auth().
+                    oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+                    param("name", "HelloWorld").log().all().
                 when().
-                put("https://api.trello.com/1/boards/9reOdft6").
+                    put("https://api.trello.com/1/boards/9reOdft6").
                 then().
-                assertThat().statusCode(200).log().all().
-                extract().response();
+                    assertThat().statusCode(200).log().all().extract().response();
         Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
@@ -125,13 +125,15 @@ public class ReadConfigurationTest {
     public void postRequest() {
         Map<String, Object> mymap = new HashMap<String, Object>();
         mymap.put("name", "Testeando");
-        response = given().contentType(JSON).body(mymap).
-                auth().
-                oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+        response =
+                given().
+                    auth().
+                    oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+                    contentType(JSON).body(mymap).
                 when().
-                post("https://api.trello.com/1/boards/").
+                    post("https://api.trello.com/1/boards/").
                 then().
-                assertThat().statusCode(200).extract().response();
+                    assertThat().statusCode(200).extract().response();
         Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
@@ -141,14 +143,14 @@ public class ReadConfigurationTest {
     @Test
     public void deleteRequest() {
 
-        response = given().
-                auth().
-                oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+        response =
+                given().
+                    auth().
+                    oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
                 when().
-                delete("https://api.trello.com/1/boards/jVLf29ab").
+                    delete("https://api.trello.com/1/boards/jVLf29ab").
                 then().
-                assertThat().statusCode(404).log().all().
-                extract().response();
+                    assertThat().statusCode(404).log().all().extract().response();
         Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 
@@ -157,16 +159,16 @@ public class ReadConfigurationTest {
      */
     @Test
     public void postRequestWithQueryParams() {
-        response = given().
-                auth().
-                oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
-                queryParams("name", "Testeando3").
-                contentType(ContentType.JSON).
+        response =
+                given().
+                    auth().
+                    oauth(consumerKey, consumerSecret, accessToken, tokenSecret).
+                    queryParams("name", "Testeando3").
+                    contentType(ContentType.JSON).
                 when().
-                post("https://api.trello.com/1/boards/").
+                    post("https://api.trello.com/1/boards/").
                 then().
-                assertThat().statusCode(200).log().all().
-                extract().response();
+                    assertThat().statusCode(200).log().all().extract().response();
         Log.getInstance().getLog().info("Status Code: " + response.getStatusCode());
     }
 }

@@ -19,14 +19,14 @@ public final class Log {
     private static Logger log = Logger.getLogger(Log.class);
 
     /**
-     *Private constructor for the Singleton pattern.
+     * Private constructor for the Singleton pattern.
      */
     private Log() {
         super();
     }
 
     /**
-     *This method returns a log instance.
+     * This method returns a log instance.
      * @return an 'instance'.
      */
     public static Log getInstance() {
@@ -39,7 +39,7 @@ public final class Log {
     }
 
     /**
-     *This method returns a 'log' with which more loggers can be added.
+     * This method returns a 'log' with which more loggers can be added.
      * @return a 'log'.
      */
     public org.apache.log4j.Logger getLog() {

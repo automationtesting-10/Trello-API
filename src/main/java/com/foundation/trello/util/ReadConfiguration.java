@@ -25,7 +25,6 @@ public final class ReadConfiguration {
      * @return the values the key.
      */
     private Properties readConfigurationFile() {
-
         try {
             inputProperties = new FileInputStream("config.properties");
             properties = new Properties();
