@@ -49,8 +49,6 @@ task cucumber() {
 dependencies {
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
     compile group: 'io.cucumber', name: 'cucumber-java', version: '4.7.1'
-
-//    testCompile 'io.cucumber:cucumber-java:4.3.1'
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
     compile group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.1'
     // https://mvnrepository.com/artifact/io.rest-assured/json-path

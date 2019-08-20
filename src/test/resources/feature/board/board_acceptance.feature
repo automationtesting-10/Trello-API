@@ -6,7 +6,7 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
     And I set up the data:
       """
         {
-         "name":"New board test RAUL"
+         "name":"New board test"
         }
       """
     When I send the request

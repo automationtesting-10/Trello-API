@@ -15,6 +15,7 @@ public final class FactoryRequest {
      */
     private FactoryRequest() {
     }
+
     /**
      * Creates an instance specific of RequestManagerAbstract.
      *
