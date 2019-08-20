@@ -1,7 +1,7 @@
 package com.foundation.trello.model;
 
 /**
- * Context class.
+ * This Context class is used for implement objects.
  *
  * @author Raul Choque
  * @version 0.0.1
@@ -9,10 +9,20 @@ package com.foundation.trello.model;
 public class Context {
     private Board board;
 
+    /**
+     * This method constructor initializes the variables.
+     *
+     * @param board the board parameter defines the input board.
+     */
     public Context(Board board) {
         this.board = board;
     }
 
+    /**
+     * This method getBoard() returns a board.
+     *
+     * @return a board.
+     */
     public Board getBoard() {
         return board;
     }

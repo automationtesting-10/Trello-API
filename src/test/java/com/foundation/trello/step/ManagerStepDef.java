@@ -1,6 +1,9 @@
 package com.foundation.trello.step;
 
-import com.foundation.trello.model.*;
+import com.foundation.trello.model.Board;
+import com.foundation.trello.model.Context;
+import com.foundation.trello.model.FactoryRequest;
+import com.foundation.trello.model.RequestManagerAbstract;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,53 +17,61 @@ import org.testng.Assert;
  * @version 0.0.1
  */
 public class ManagerStepDef {
-//    private RequestManager requestManager;
     private RequestManagerAbstract requestManager;
-    private FactoryRequest factoryRequest;
     private Response response;
     private Context context;
     private Board board;
-//    RequestPost requestPost = new RequestPost();
 
     /**
+     * This method constructor initializes variables.
      *
-     * @param context
+     * @param context The context parameter defines the input context.
      */
     public ManagerStepDef(Context context) {
         this.context = context;
         this.board = context.getBoard();
     }
+
+    /**
+     * This method makes request.
+     *
+     * @param method   The method parameter defines a input method.
+     * @param endPoint The endpoint parameter defines a input endpoint.
+     */
     @Given("I create a {string} request to {string} endpoint")
-    public void i_create_a_request_to_endpoint(String method, String endPoint) {
-//        RequestMethod requestMethod = RequestMethod.valueOf(method.toUpperCase());
-        factoryRequest = new FactoryRequest();
-        requestManager = factoryRequest.getRequest(method);
+    public void iCreateRequest(String method, String endPoint) {
+        requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
-//        requestManager = new RequestManager(requestMethod, endPoint);
     }
 
+    /**
+     * This method sets the data.
+     *
+     * @param data The data parameter defines input data.
+     */
     @Given("I set up the data:")
-    public void i_set_up_the_data(String data) {
+    public void iSetUpData(String data) {
         requestManager.setData(data);
     }
 
-    @When("I sent the request")
-    public void i_sent_the_request() {
-//        response = requestManager.makeRequest();
-        System.out.println("request----" + requestManager.getRequest());
-        System.out.println("method----" + requestManager.getMethod());
-        System.out.println("data----" + requestManager.getData());
-        System.out.println("endPoint----" + requestManager.getEndPoint());
-        factoryRequest = new FactoryRequest();
-        response = factoryRequest.getResponse(requestManager.getMethod());
+    /**
+     * This method is used for send the request to the API.
+     */
+    @When("I send the request")
+    public void sentRequest() {
+        response = requestManager.makeRequest();
         String idBoard = response.body().jsonPath().get("id");
-        System.out.println("id_board: " + idBoard);
         board.setId(idBoard);
     }
 
+    /**
+     * This method verifies that the response to the requirement is correct.
+     *
+     * @param statusCode The statusCode parameter defines the input status.
+     */
     @Then("I get a {int} status code as response")
-    public void i_get_a_status_code_as_response(int statusCode) {
+    public void getStatusCodeAsResponse(int statusCode) {
         Assert.assertEquals(statusCode, response.getStatusCode());
     }
 }

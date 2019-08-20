@@ -9,6 +9,6 @@ package com.foundation.trello.model;
 public enum RequestMethod {
     POST,
     GET,
-    UPDATE,
+    PUT,
     DELETE
 }

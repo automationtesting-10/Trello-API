@@ -6,17 +6,17 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 
 /**
- * RequestPost class.
+ * RequestPut class.
  *
  * @author Raul Choque
  * @version 0.0.1
  */
-public class RequestPost extends RequestManagerAbstract {
+public class RequestPut extends RequestManagerAbstract {
 
     /**
-     * Makes a post request and returns its response.
+     * Makes a put request and returns its response.
      *
-     * @return a Response of a post request.
+     * @return a Response of a put request.
      */
     public Response makeRequest() {
         return given().
@@ -24,6 +24,6 @@ public class RequestPost extends RequestManagerAbstract {
                 contentType(JSON).
                 body(getData()).
                 when().
-                post(getEndPoint());
+                put(getEndPoint());
     }
 }

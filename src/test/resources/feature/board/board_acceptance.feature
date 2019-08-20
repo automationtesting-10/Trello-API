@@ -6,15 +6,15 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
     And I set up the data:
       """
         {
-          "name":"New board"
+         "name":"New board test"
         }
       """
-    When I sent the request
+    When I send the request
     Then I get a 200 status code as response
 
 #  Scenario: Read a board by Id
 #    Given I create a "GET" request to "/boards/{idBoard}" endpoint
-#    When I sent the request
+#    When I send the request
 #    Then I get a 200 status code as response
 #
 #  Scenario: Update board's name
@@ -25,10 +25,10 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
 #          "name":"New board with new name"
 #        }
 #      """
-#    When I sent the request
+#    When I send the request
 #    Then I get a 200 status code as response
 #
 #  Scenario: Delete a board by Id
 #    Given I create a "DELETE" request to "/boards/{idBoard}" endpoint
-#    When I sent the request
+#    When I send the request
 #    Then I get a 200 status code as response

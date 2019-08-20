@@ -16,95 +16,73 @@ public abstract class RequestManagerAbstract {
     private String data;
     private String method;
 
-//    /**
-//     *
-//     */
-//    public RequestManager(String method, String endPoint) {
-//        request = Authentication.getInstance().getRequestSpecification();
-//        this.method = method;
-//        this.endPoint = endPoint;
-//        data = "";
-//    }
-
     /**
+     * Sets endPoint attribute.
      *
-     * @param endPoint
+     * @param endPoint is new value for set endPoint attribute.
      */
     public void setEndPoint(String endPoint) {
         this.endPoint = endPoint;
     }
 
     /**
+     * Sets data attribute with a new value.
      *
-     * @param data
+     * @param data is the new value for set data attribute.
      */
     public void setData(String data) {
         this.data = data;
     }
 
+    /**
+     * Gets data attribute of class.
+     *
+     * @return data attribute.
+     */
     public String getData() {
         return data;
     }
 
+    /**
+     * Gets method attribute of class.
+     *
+     * @return method attribute.
+     */
     public String getMethod() {
         return method;
     }
 
     /**
+     * Sets method attribute with a new value.
      *
-     * @param method
+     * @param method is the new value for set method attribute.
      */
     public void setMethod(String method) {
         this.method = method;
     }
 
+    /**
+     * Gets RequestSpecification with data for authentication.
+     *
+     * @return a RequestSpecification.
+     */
     public RequestSpecification getRequest() {
-
         return Authentication.getInstance().getRequestSpecification();
     }
 
-//    public void setRequest(RequestSpecification request) {
-//        this.request = request;
-//    }
-
+    /**
+     * Gets endPoint attribute of class.
+     *
+     * @return endPoint attribute.
+     */
     public String getEndPoint() {
         return endPoint;
     }
-    public abstract Response makeRequest();
 
     /**
+     * Makes request and returns its response.
      *
-     * @return
+     * @return a Response of a request.
      */
-//    public Response makeRequest() {
-//        if (method.compareTo("POST") == 0) {
-//            return given().
-//                    spec(request).
-//                    contentType(JSON).
-//                    body(data).
-//                    when().
-//                    post(endPoint);
-//        } else {
-//            if (method.compareTo("GET") == 0) {
-//                return given().
-//                        spec(request).
-//                        when().
-//                        get(endPoint);
-//            } else {
-//                if (method.compareTo("PUT") == 0) {
-//                    return given().
-//                            spec(request).
-//                            contentType(JSON).
-//                            body(data).
-//                            when().
-//                            put(endPoint);
-//                } else {
-//                    return given().
-//                            spec(request).
-//                            when().
-//                            delete(endPoint);
-//                }
-//            }
-//        }
-//    }
+    public abstract Response makeRequest();
 }
