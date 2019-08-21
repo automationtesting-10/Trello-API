@@ -24,7 +24,7 @@
       "title": "The Id Schema",
       "default": "",
       "examples": [
-        "5d4f6a5699878567cc8bd653"
+        "5d5dbbab4b2d85721e45b614"
       ],
       "pattern": "^(.*)$"
     },
@@ -34,7 +34,7 @@
       "title": "The Name Schema",
       "default": "",
       "examples": [
-        "test Raul"
+        "New board test"
       ],
       "pattern": "^(.*)$"
     },
@@ -90,7 +90,7 @@
       "title": "The Url Schema",
       "default": "",
       "examples": [
-        "https://trello.com/b/6t6pyUkk/test-raul"
+        "https://trello.com/b/XELVSOYH/new-board-test"
       ],
       "pattern": "^(.*)$"
     },
@@ -100,7 +100,7 @@
       "title": "The Shorturl Schema",
       "default": "",
       "examples": [
-        "https://trello.com/b/6t6pyUkk"
+        "https://trello.com/b/XELVSOYH"
       ],
       "pattern": "^(.*)$"
     },
@@ -124,6 +124,7 @@
         "backgroundImageScaled",
         "backgroundTile",
         "backgroundBrightness",
+        "backgroundColor",
         "backgroundBottomColor",
         "backgroundTopColor",
         "canBePublic",
@@ -188,7 +189,7 @@
           "title": "The Selfjoin Schema",
           "default": false,
           "examples": [
-            false
+            true
           ]
         },
         "cardCovers": {
@@ -234,64 +235,27 @@
           "title": "The Background Schema",
           "default": "",
           "examples": [
-            "5d4c466eb39190543ce2d84d"
+            "blue"
           ],
           "pattern": "^(.*)$"
         },
         "backgroundImage": {
           "$id": "#/properties/prefs/properties/backgroundImage",
-          "type": "string",
+          "type": "null",
           "title": "The Backgroundimage Schema",
-          "default": "",
+          "default": null,
           "examples": [
-            "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1365x2048/70cd6059e980e33fb0b64c16691687fa/photo-1565207470635-d14c3e9152db"
-          ],
-          "pattern": "^(.*)$"
+            null
+          ]
         },
         "backgroundImageScaled": {
           "$id": "#/properties/prefs/properties/backgroundImageScaled",
-          "type": "array",
+          "type": "null",
           "title": "The Backgroundimagescaled Schema",
-          "items": {
-            "$id": "#/properties/prefs/properties/backgroundImageScaled/items",
-            "type": "object",
-            "title": "The Items Schema",
-            "required": [
-              "width",
-              "height",
-              "url"
-            ],
-            "properties": {
-              "width": {
-                "$id": "#/properties/prefs/properties/backgroundImageScaled/items/properties/width",
-                "type": "integer",
-                "title": "The Width Schema",
-                "default": 0,
-                "examples": [
-                  67
-                ]
-              },
-              "height": {
-                "$id": "#/properties/prefs/properties/backgroundImageScaled/items/properties/height",
-                "type": "integer",
-                "title": "The Height Schema",
-                "default": 0,
-                "examples": [
-                  100
-                ]
-              },
-              "url": {
-                "$id": "#/properties/prefs/properties/backgroundImageScaled/items/properties/url",
-                "type": "string",
-                "title": "The Url Schema",
-                "default": "",
-                "examples": [
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/67x100/39b36e24827af4237bcbfd1a45e84308/photo-1565207470635-d14c3e9152db.jpg"
-                ],
-                "pattern": "^(.*)$"
-              }
-            }
-          }
+          "default": null,
+          "examples": [
+            null
+          ]
         },
         "backgroundTile": {
           "$id": "#/properties/prefs/properties/backgroundTile",
@@ -312,13 +276,23 @@
           ],
           "pattern": "^(.*)$"
         },
+        "backgroundColor": {
+          "$id": "#/properties/prefs/properties/backgroundColor",
+          "type": "string",
+          "title": "The Backgroundcolor Schema",
+          "default": "",
+          "examples": [
+            "#0079BF"
+          ],
+          "pattern": "^(.*)$"
+        },
         "backgroundBottomColor": {
           "$id": "#/properties/prefs/properties/backgroundBottomColor",
           "type": "string",
           "title": "The Backgroundbottomcolor Schema",
           "default": "",
           "examples": [
-            "#4b3e34"
+            "#0079BF"
           ],
           "pattern": "^(.*)$"
         },
@@ -328,7 +302,7 @@
           "title": "The Backgroundtopcolor Schema",
           "default": "",
           "examples": [
-            "#cdc5c5"
+            "#0079BF"
           ],
           "pattern": "^(.*)$"
         },
