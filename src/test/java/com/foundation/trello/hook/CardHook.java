@@ -1,6 +1,6 @@
 package com.foundation.trello.hook;
 
-import com.foundation.trello.model.Board;
+import com.foundation.trello.model.Card;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
@@ -9,30 +9,30 @@ import io.cucumber.java.After;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class.
+ * CardHook class.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
-    private Board board;
+public final class CardHook {
+    private Card card;
     private RequestManagerAbstract requestManager;
 
     /**
      * This method constructor initializes the variables.
      *
-     * @param context initialize board and context attributes.
+     * @param context initialize card and context attributes.
      */
-    public BoardHook(Context context) {
-        this.board = context.getBoard();
+    public CardHook(Context context) {
+        this.card = context.getCard();
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for delete a Card by id.
      */
-    @After("@delete-board")
+    @After("@delete-card")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(board.getId());
+        String endPoint = "/cards/".concat(card.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);

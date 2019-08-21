@@ -2,8 +2,8 @@ package com.foundation.trello.step;
 
 import com.foundation.trello.model.Board;
 import com.foundation.trello.model.Context;
-import com.foundation.trello.model.FactoryRequest;
-import com.foundation.trello.model.RequestManagerAbstract;
+import com.foundation.trello.model.request.FactoryRequest;
+import com.foundation.trello.model.request.RequestManagerAbstract;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
