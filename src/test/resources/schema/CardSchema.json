@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/root.json",
   "type": "object",
-  "title": "The Card Schema",
+  "title": "The Root Schema",
   "required": [
     "id",
     "badges",
@@ -40,7 +40,7 @@
       "title": "The Id Schema",
       "default": "",
       "examples": [
-        "5d5db579ea677b6bafeeb733"
+        "5d5dd190c96d0012451ee0cc"
       ],
       "pattern": "^(.*)$"
     },
@@ -243,7 +243,7 @@
       "title": "The Datelastactivity Schema",
       "default": "",
       "examples": [
-        "2019-08-21T21:19:53.736Z"
+        "2019-08-21T23:19:44.747Z"
       ],
       "pattern": "^(.*)$"
     },
@@ -334,7 +334,7 @@
       "title": "The Idshort Schema",
       "default": 0,
       "examples": [
-        1
+        3
       ]
     },
     "idAttachmentCover": {
@@ -381,7 +381,7 @@
       "title": "The Pos Schema",
       "default": 0,
       "examples": [
-        16384
+        32768
       ]
     },
     "shortLink": {
@@ -390,7 +390,7 @@
       "title": "The Shortlink Schema",
       "default": "",
       "examples": [
-        "j88rKhbw"
+        "jKWPULiQ"
       ],
       "pattern": "^(.*)$"
     },
@@ -400,7 +400,7 @@
       "title": "The Shorturl Schema",
       "default": "",
       "examples": [
-        "https://trello.com/c/j88rKhbw"
+        "https://trello.com/c/jKWPULiQ"
       ],
       "pattern": "^(.*)$"
     },
@@ -419,7 +419,7 @@
       "title": "The Url Schema",
       "default": "",
       "examples": [
-        "https://trello.com/c/j88rKhbw/1-card4"
+        "https://trello.com/c/jKWPULiQ/3-card4"
       ],
       "pattern": "^(.*)$"
     }
