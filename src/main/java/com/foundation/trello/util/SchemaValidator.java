@@ -12,9 +12,8 @@ public final class SchemaValidator {
     /**
      * This method constructor initializes the variables.
      */
-    private SchemaValidator() {
+    private SchemaValidator() { }
 
-    }
     /**
      * This method validates the right schema of the response for a request.
      * @param response The response parameter defines the input response obtained for a request.

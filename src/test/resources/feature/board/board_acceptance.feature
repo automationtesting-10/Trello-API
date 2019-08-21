@@ -11,4 +11,4 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
       """
     When I send the request
     Then I get a 200 status code as response
-    And  I get a schema "BoardSchema"
+    And  I verify the response schema whit "Board"

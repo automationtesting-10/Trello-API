@@ -12,7 +12,6 @@ import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 import org.testng.asserts.SoftAssert;
 
-
 /**
  * ManagerStepDef class.
  *
@@ -79,10 +78,11 @@ public class ManagerStepDef {
 
     /**
      * This method verifies that the schema response to the requirement is correct.
+     *
      * @param schema The schema parameter defines the input file name schema.
      */
-    @And("I get a schema {string}")
+    @And("I verify the response schema whit {string}")
     public void iGetASchema(String schema) {
-        SchemaValidator.validator(response, "schema/" + schema + ".json");
+        SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
     }
 }
