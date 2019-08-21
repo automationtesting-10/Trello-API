@@ -3,7 +3,7 @@ package com.foundation.trello.model;
 /**
  * This class works with JsonConvert class.
  *
- * @author Andres Burgos
+ * @author Andres Burgos, Maday Alcala.
  */
 public class List {
     private String id;
