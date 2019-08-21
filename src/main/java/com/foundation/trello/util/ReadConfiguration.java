@@ -22,7 +22,9 @@ public final class ReadConfiguration {
     }
 
     /**
-     * @return the values the key.
+     *This method reads the file 'config.properties' and returns its values through the object 'properties'.
+     *
+     * @return an object 'properties' with which you can get data from "config.properties".
      */
     private Properties readConfigurationFile() {
         try {
@@ -41,6 +43,9 @@ public final class ReadConfiguration {
     }
 
     /**
+     * This method ensures that only one instance is created according
+     * to the builder pattern.
+     *
      * @return an instance.
      */
     public static ReadConfiguration getInstance() {
