@@ -4,6 +4,8 @@ import com.foundation.trello.model.Board;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
+import com.foundation.trello.util.SchemaValidator;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -72,5 +74,15 @@ public class ManagerStepDef {
     public void getStatusCodeAsResponse(int statusCode) {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(statusCode, response.getStatusCode());
+    }
+
+    /**
+     * This method verifies that the schema response to the requirement is correct.
+     *
+     * @param schema The schema parameter defines the input file name schema.
+     */
+    @And("I verify the response schema whit {string}")
+    public void iGetASchema(String schema) {
+        SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
     }
 }
