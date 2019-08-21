@@ -12,7 +12,7 @@ public class List {
     /**
      * This method is used to get id.
      *
-     * @return a string.
+     * @return a string that represent the id of the list.
      */
     public String getId() {
         return id;
@@ -30,7 +30,7 @@ public class List {
     /**
      * This method is used to get name.
      *
-     * @return a string.
+     * @return a string that represent the name of the list.
      */
     public String getName() {
         return name;

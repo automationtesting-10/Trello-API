@@ -46,7 +46,7 @@ public final class ReadConfiguration {
      * This method ensures that only one instance is created according
      * to the builder pattern.
      *
-     * @return an instance.
+     * @return an instance of "ReadConfiguration" type.
      */
     public static ReadConfiguration getInstance() {
         if (readConfiguration == null) {
