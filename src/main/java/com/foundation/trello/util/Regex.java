@@ -14,10 +14,10 @@ public final class Regex {
     private String[] ids;
 
     /**
-     * This method constructor initialize the parameters.
+     * This method constructor initializes the parameters.
      *
      * @param string The oldString parameter defines the endpoint input.
-     * @param ids    The id parameter defines the list of id.
+     * @param ids The id parameter defines the list of id.
      */
     private Regex(String string, String[] ids) {
         this.string = string;
@@ -25,10 +25,10 @@ public final class Regex {
     }
 
     /**
-     * This method verify if of object Regex was created, if not creates it.
+     * This method verifies if of object Regex was created, if not creates it.
      *
      * @param string The string parameter defines the endpoint input.
-     * @param ids    The id parameter defines the list of id.
+     * @param ids The id parameter defines the list of id.
      * @return a regex.
      */
     public static Regex getInstance(String string, String[] ids) {
@@ -39,7 +39,7 @@ public final class Regex {
     }
 
     /**
-     * This method return a new endpoint.
+     * This method returns a new endpoint.
      *
      * @return a string.
      */
