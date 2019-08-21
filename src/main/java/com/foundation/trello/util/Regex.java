@@ -11,43 +11,44 @@ import java.util.regex.Pattern;
 public final class Regex {
     private static Regex ourInstance;
     private String string;
-    private String id;
-    private String result;
+    private String[] ids;
 
     /**
-     * This method constructor initialize the parameters.
+     * This method constructor initializes the parameters.
      *
      * @param string The oldString parameter defines the endpoint input.
-     * @param id The id parameter defines the id of the card.
+     * @param ids The id parameter defines the list of id.
      */
-    private Regex(String string, String id) {
+    private Regex(String string, String[] ids) {
         this.string = string;
-        this.id = id;
+        this.ids = ids;
     }
 
     /**
-     * This method verify if of object Regex was created, if not creates it.
+     * This method verifies if of object Regex was created, if not creates it.
      *
      * @param string The string parameter defines the endpoint input.
-     * @param id The id parameter defines the id of the card.
-     * @return Regex.
+     * @param ids The id parameter defines the list of id.
+     * @return a regex.
      */
-    public static Regex getInstance(String string, String id) {
+    public static Regex getInstance(String string, String[] ids) {
         if (ourInstance == null) {
-            ourInstance = new Regex(string, id);
+            ourInstance = new Regex(string, ids);
         }
         return ourInstance;
     }
 
     /**
-     * This method return a new endpoint replacing {id}.
+     * This method returns a new endpoint.
      *
-     * @return new endpoint with id.
+     * @return a string.
      */
     public String getString() {
-        Pattern pattern = Pattern.compile("\\{id\\}");
-        Matcher matcher = pattern.matcher(string);
-        result = matcher.replaceAll(id);
-        return result;
+        Pattern pattern = Pattern.compile("\\{(.*?)\\}");
+        for (int index = 0; index < ids.length; index++) {
+            Matcher matcher = pattern.matcher(string);
+            string = matcher.replaceFirst(ids[index]);
+        }
+        return string;
     }
 }
