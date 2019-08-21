@@ -28,10 +28,20 @@ public class Context {
         return board;
     }
 
+    /**
+     * This method is used to get id.
+     *
+     * @return id as string.
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * This method is used to set id.
+     *
+     * @param id the id parameter defines of input id.
+     */
     public void setId(String id) {
         this.id = id;
     }

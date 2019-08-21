@@ -1,6 +1,5 @@
 package com.foundation.trello.step;
 
-import com.foundation.trello.model.Board;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.FactoryRequest;
 import com.foundation.trello.model.RequestManagerAbstract;
@@ -8,11 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-import org.apache.commons.lang.ObjectUtils;
 import org.testng.asserts.SoftAssert;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * ManagerStepDef class.
@@ -24,7 +19,6 @@ public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
     private Context context;
-    private Board board;
 
     /**
      * This method constructor initializes variables.
@@ -33,7 +27,6 @@ public class ManagerStepDef {
      */
     public ManagerStepDef(Context context) {
         this.context = context;
-        this.board = context.getBoard();
     }
 
     /**
@@ -46,8 +39,8 @@ public class ManagerStepDef {
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
-        String id = context.getId();
-        String completeEndPoint = context.getId()== null?  endPoint:endPoint.replaceAll("\\{(.*?)\\}", context.getId());
+        String completeEndPoint = context.getId() == null
+                ? endPoint : endPoint.replaceAll("\\{(.*?)\\}", context.getId());
         requestManager.setEndPoint(completeEndPoint);
     }
 
@@ -67,9 +60,8 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        String idBoard = response.body().jsonPath().get("id");
-        System.out.println(response.getStatusCode());
-        context.setId(idBoard);
+        String id = response.body().jsonPath().get("id");
+        context.setId(id);
 
     }
 

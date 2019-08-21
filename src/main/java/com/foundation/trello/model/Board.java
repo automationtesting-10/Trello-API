@@ -12,7 +12,7 @@ public class Board {
     /**
      * This method is used to get id.
      *
-     * @return a string.
+     * @return id as string.
      */
     public String getId() {
         return id;
@@ -30,7 +30,7 @@ public class Board {
     /**
      * This method is used to get name.
      *
-     * @return a string.
+     * @return name as string.
      */
     public String getName() {
         return name;

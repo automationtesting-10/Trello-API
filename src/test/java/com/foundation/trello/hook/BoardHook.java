@@ -1,6 +1,5 @@
 package com.foundation.trello.hook;
 
-import com.foundation.trello.model.Board;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.FactoryRequest;
 import com.foundation.trello.model.RequestManagerAbstract;
@@ -16,7 +15,6 @@ import io.restassured.response.Response;
  * @version 0.0.1
  */
 public final class BoardHook {
-    private Board board;
     private Context context;
     private RequestManagerAbstract requestManager;
 
@@ -27,7 +25,6 @@ public final class BoardHook {
      */
     public BoardHook(Context context) {
         this.context = context;
-        this.board = context.getBoard();
     }
 
     /**
@@ -35,7 +32,6 @@ public final class BoardHook {
      */
     @After("@delete-board")
     public void afterScenario() {
-        System.out.println("I am into after hook");
         String endPoint = "/boards/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
@@ -46,7 +42,7 @@ public final class BoardHook {
 
     }
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for create a Board.
      */
     @Before("@create-board")
     public void beforeScenario() {
@@ -60,6 +56,5 @@ public final class BoardHook {
         Response response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
         context.setId(response.jsonPath().get("id"));
-        String test = context.getId();
     }
 }
