@@ -7,6 +7,7 @@ package com.foundation.trello.model;
  * @version 0.0.1
  */
 public class Context {
+    private String id;
     private Board board;
 
     /**
@@ -25,5 +26,13 @@ public class Context {
      */
     public Board getBoard() {
         return board;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

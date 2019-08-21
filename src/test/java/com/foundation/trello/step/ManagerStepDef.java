@@ -8,7 +8,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.apache.commons.lang.ObjectUtils;
 import org.testng.asserts.SoftAssert;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * ManagerStepDef class.
@@ -19,6 +23,7 @@ import org.testng.asserts.SoftAssert;
 public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
+    private Context context;
     private Board board;
 
     /**
@@ -27,6 +32,7 @@ public class ManagerStepDef {
      * @param context The context parameter defines the input context.
      */
     public ManagerStepDef(Context context) {
+        this.context = context;
         this.board = context.getBoard();
     }
 
@@ -40,7 +46,9 @@ public class ManagerStepDef {
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
-        requestManager.setEndPoint(endPoint);
+        String id = context.getId();
+        String completeEndPoint = context.getId()== null?  endPoint:endPoint.replaceAll("\\{(.*?)\\}", context.getId());
+        requestManager.setEndPoint(completeEndPoint);
     }
 
     /**
@@ -60,7 +68,9 @@ public class ManagerStepDef {
     public void sentRequest() {
         response = requestManager.makeRequest();
         String idBoard = response.body().jsonPath().get("id");
-        board.setId(idBoard);
+        System.out.println(response.getStatusCode());
+        context.setId(idBoard);
+
     }
 
     /**
