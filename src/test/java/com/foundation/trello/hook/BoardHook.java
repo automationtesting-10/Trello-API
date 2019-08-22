@@ -1,8 +1,8 @@
 package com.foundation.trello.hook;
 
 import com.foundation.trello.model.Context;
-import com.foundation.trello.model.FactoryRequest;
-import com.foundation.trello.model.RequestManagerAbstract;
+import com.foundation.trello.model.request.FactoryRequest;
+import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.Log;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

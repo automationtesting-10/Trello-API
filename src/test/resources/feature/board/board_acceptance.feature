@@ -11,6 +11,7 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
       """
     When I send the request
     Then I get a 200 status code as response
+    And  I verify the response schema whit "Board"
 
   @create-board @delete-board
   Scenario: Read a board by Id
@@ -35,3 +36,4 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
     Given I create a "DELETE" request to "/boards/{idBoard}" endpoint
     When I send the request
     Then I get a 200 status code as response
+    

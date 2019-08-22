@@ -9,14 +9,17 @@ package com.foundation.trello.model;
 public class Context {
     private String id;
     private Board board;
+    private Card card;
 
     /**
      * This method constructor initializes the variables.
      *
      * @param board the board parameter defines the input board.
+     * @param card the card parameter defines the input card.
      */
-    public Context(Board board) {
+    public Context(Board board, Card card) {
         this.board = board;
+        this.card = card;
     }
 
     /**
