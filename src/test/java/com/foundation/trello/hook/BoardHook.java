@@ -41,6 +41,7 @@ public final class BoardHook {
         Log.getInstance().getLog().info(response);
 
     }
+
     /**
      * Makes a request for create a Board.
      */
