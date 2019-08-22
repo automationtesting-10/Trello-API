@@ -22,6 +22,7 @@ public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
     private Board board;
+    SoftAssert softAssert;
 
     /**
      * This method constructor initializes variables.
@@ -72,7 +73,7 @@ public class ManagerStepDef {
      */
     @Then("I get a {int} status code as response")
     public void getStatusCodeAsResponse(int statusCode) {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         softAssert.assertEquals(statusCode, response.getStatusCode());
     }
 
@@ -83,6 +84,7 @@ public class ManagerStepDef {
      */
     @And("I verify the response schema whit {string}")
     public void iGetASchema(String schema) {
-        SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
+        boolean validator = SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
+        softAssert.assertTrue(validator);
     }
 }
