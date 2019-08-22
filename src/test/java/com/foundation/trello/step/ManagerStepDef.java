@@ -14,12 +14,13 @@ import org.testng.asserts.SoftAssert;
 /**
  * ManagerStepDef class.
  *
- * @author Raul Choque
+ * @author Raul Choque, Josue Rodriguez.
  * @version 0.0.1
  */
 public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
+    private SoftAssert softAssert;
     private Context context;
 
     /**
@@ -73,17 +74,18 @@ public class ManagerStepDef {
      */
     @Then("I get a {int} status code as response")
     public void getStatusCodeAsResponse(int statusCode) {
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         softAssert.assertEquals(statusCode, response.getStatusCode());
     }
 
     /**
      * This method verifies that the schema response to the requirement is correct.
      *
-     * @param schema The schema parameter defines the input file name schema.
+     * @param schemaName The schema parameter defines the input file name schema.
      */
     @And("I verify the response schema whit {string}")
-    public void iGetASchema(String schema) {
-        SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
+    public void iGetASchema(String schemaName) {
+        boolean validator = SchemaValidator.validator(response, schemaName);
+        softAssert.assertTrue(validator);
     }
 }
