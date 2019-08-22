@@ -26,7 +26,7 @@ public final class Log {
      * This method ensures that only one instance is created according
      * to the builder pattern and returns a log instance.
      *
-     * @return an 'instance'.
+     * @return an 'instance' of Log.
      */
     public static Log getInstance() {
         if (instance == null) {

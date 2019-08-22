@@ -1,26 +1,26 @@
-package com.foundation.trello.model;
+package com.foundation.trello.model.request;
 
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
 /**
- * RequestDelete class.
+ * RequestGet class.
  *
  * @author Raul Choque
  * @version 0.0.1
  */
-public class RequestDelete extends RequestManagerAbstract {
+public class RequestGet extends RequestManagerAbstract {
 
     /**
-     * Makes a delete request and returns its response.
+     * Makes a get request and returns its response.
      *
-     * @return a Response of a delete request.
+     * @return a Response of a get request.
      */
     public Response makeRequest() {
         return given().
                 spec(super.getRequest()).
                 when().
-                delete(super.getEndPoint());
+                get(super.getEndPoint());
     }
 }

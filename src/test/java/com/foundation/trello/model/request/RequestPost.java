@@ -1,4 +1,4 @@
-package com.foundation.trello.model;
+package com.foundation.trello.model.request;
 
 import io.restassured.response.Response;
 
