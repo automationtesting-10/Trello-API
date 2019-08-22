@@ -14,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 /**
  * ManagerStepDef class.
  *
- * @author Raul Choque
+ * @author Raul Choque, Josue Rodriguez.
  * @version 0.0.1
  */
 public class ManagerStepDef {
@@ -22,7 +22,6 @@ public class ManagerStepDef {
     private Response response;
     private SoftAssert softAssert;
     private Context context;
-
 
     /**
      * This method constructor initializes variables.
