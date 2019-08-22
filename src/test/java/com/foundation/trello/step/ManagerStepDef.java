@@ -1,6 +1,5 @@
 package com.foundation.trello.step;
 
-import com.foundation.trello.model.Board;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
@@ -21,8 +20,9 @@ import org.testng.asserts.SoftAssert;
 public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
-    private Board board;
     private SoftAssert softAssert;
+    private Context context;
+
 
     /**
      * This method constructor initializes variables.
@@ -30,7 +30,7 @@ public class ManagerStepDef {
      * @param context The context parameter defines the input context.
      */
     public ManagerStepDef(Context context) {
-        this.board = context.getBoard();
+        this.context = context;
     }
 
     /**
@@ -43,7 +43,9 @@ public class ManagerStepDef {
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
-        requestManager.setEndPoint(endPoint);
+        String completeEndPoint = context.getId() == null
+                ? endPoint : endPoint.replaceAll("\\{(.*?)\\}", context.getId());
+        requestManager.setEndPoint(completeEndPoint);
     }
 
     /**
@@ -62,8 +64,8 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        String idBoard = response.body().jsonPath().get("id");
-        board.setId(idBoard);
+        String id = response.body().jsonPath().get("id");
+        context.setId(id);
     }
 
     /**
@@ -80,11 +82,11 @@ public class ManagerStepDef {
     /**
      * This method verifies that the schema response to the requirement is correct.
      *
-     * @param schemaJson The schema parameter defines the input file name schema.
+     * @param schemaName The schema parameter defines the input file name schema.
      */
     @And("I verify the response schema whit {string}")
-    public void iGetASchema(String schemaJson) {
-        boolean validator = SchemaValidator.validator(response, schemaJson);
+    public void iGetASchema(String schemaName) {
+        boolean validator = SchemaValidator.validator(response, schemaName);
         softAssert.assertTrue(validator);
     }
 }

@@ -7,6 +7,7 @@ package com.foundation.trello.model;
  * @version 0.0.1
  */
 public class Context {
+    private String id;
     private Board board;
     private Card card;
 
@@ -22,7 +23,7 @@ public class Context {
     }
 
     /**
-     * This method getBoard() returns a board.
+     * This method returns the board attribute.
      *
      * @return a board.
      */
@@ -31,11 +32,20 @@ public class Context {
     }
 
     /**
-     * This method getCard() returns a card.
+     * This method returns the id attribute.
      *
-     * @return a card.
+     * @return id as string.
      */
-    public Card getCard() {
-        return card;
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * This method sets the id attribute.
+     *
+     * @param id defines the input id.
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }

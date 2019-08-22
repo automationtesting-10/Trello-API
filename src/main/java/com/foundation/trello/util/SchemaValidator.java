@@ -20,13 +20,14 @@ public final class SchemaValidator {
      * This method validates the right schemaJson of the response for a request.
      *
      * @param response   The response parameter defines the input response obtained for a request.
-     * @param schemaJson The schemaJson parameter defines the input schemaJson obtaned of a "<File>.json"
+     * @param schemaName The schemaJson parameter defines the input schemaJson obtaned of a "<File>.json"
      * @return a boolean that represent the response validation.
      */
-    public static boolean validator(Response response, String schemaJson) {
+    public static boolean validator(Response response, String schemaName) {
         boolean result = false;
+        String schemaPath = "schemaJson/" + schemaName + "Schema.json";
         try {
-            response.then().assertThat().body(matchesJsonSchemaInClasspath("schemaJson/" + schemaJson + "Schema.json"));
+            response.then().assertThat().body(matchesJsonSchemaInClasspath(schemaPath));
             result = true;
             Log.getInstance().getLog().info("The json is valid");
         } catch (Exception e) {
