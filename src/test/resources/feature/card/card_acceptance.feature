@@ -8,7 +8,6 @@ Feature: Acceptance test of "card", CRUD's(Create, Read, Update and Delete)
         {
           "name":"Here Josue",
           "idList":"{idList}"
-
         }
       """
     When I send the request
