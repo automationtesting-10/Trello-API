@@ -9,12 +9,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class create the tagger hooks for the steps.
+ * CardHook BoardHook class create the tagger hooks for the steps.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
+public final class CardHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -24,16 +24,16 @@ public final class BoardHook {
      *
      * @param context initializes context attribute.
      */
-    public BoardHook(Context context) {
+    public CardHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for delete a Card by id.
      */
-    @After(order = 2, value = "@delete-board")
+    @After(order = 1, value = "@delete-card")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
+        String endPoint = "/cards/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -43,13 +43,14 @@ public final class BoardHook {
     }
 
     /**
-     * Makes a request for create a Board.
+     * Makes a request for create a Card.
      */
-    @Before(order = 1, value = "@create-board")
+    @Before(order = 3, value = "@create-card")
     public void beforeScenario() {
-        String endPoint = "/boards/";
+        String endPoint = "/cards/";
         String method = "post";
-        String data = "{ \"name\":\"New board test in hook\" }";
+        String data = "{ \"name\":\"New card test in hook\" ,"
+                + "\"idList\":\"" + context.getId() + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
