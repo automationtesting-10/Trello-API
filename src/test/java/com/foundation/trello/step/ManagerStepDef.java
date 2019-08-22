@@ -9,6 +9,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
 import org.testng.asserts.SoftAssert;
 
 /**
@@ -82,8 +83,16 @@ public class ManagerStepDef {
      *
      * @param schema The schema parameter defines the input file name schema.
      */
-    @And("I verify the response schema whit {string}")
+    @And("I verify the response schema with {string}")
     public void iGetASchema(String schema) {
         SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
+    }
+
+    /**
+     * This method is in charge of clean after the class.
+     */
+    @AfterClass
+    public void afterClass() {
+        context.setId(null);
     }
 }
