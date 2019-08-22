@@ -55,7 +55,9 @@ public class ManagerStepDef {
      */
     @Given("I set up the data:")
     public void iSetUpData(String data) {
-        requestManager.setData(data);
+        String completeData = context.getId() == null
+                ? data : data.replaceAll("\\{(.*?)\\}", context.getId());
+        requestManager.setData(completeData);
     }
 
     /**
