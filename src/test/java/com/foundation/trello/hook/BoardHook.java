@@ -9,7 +9,7 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class.
+ * BoardHook class create the tagger hooks for the steps.
  *
  * @author Raul Choque
  * @version 0.0.1
