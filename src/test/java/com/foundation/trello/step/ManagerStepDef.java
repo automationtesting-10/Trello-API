@@ -9,6 +9,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
 import org.testng.asserts.SoftAssert;
 
 /**
@@ -87,5 +88,13 @@ public class ManagerStepDef {
     public void iGetASchema(String schemaName) {
         boolean validator = SchemaValidator.validator(response, schemaName);
         softAssert.assertTrue(validator);
+    }
+
+    /**
+     * This method is in charge of clean after the class.
+     */
+    @AfterClass
+    public void afterClass() {
+        context.setId(null);
     }
 }

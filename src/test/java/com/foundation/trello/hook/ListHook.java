@@ -4,19 +4,17 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.Log;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class create the tagger hooks for the steps.
+ * ListHook BoardHook class create the tagger hooks for the steps.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
+public final class ListHook {
     private Context context;
-    private Response response;
     private RequestManagerAbstract requestManager;
 
     /**
@@ -24,37 +22,25 @@ public final class BoardHook {
      *
      * @param context initializes context attribute.
      */
-    public BoardHook(Context context) {
+    public ListHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for create a List.
      */
-    @After(order = 2, value = "@delete-board")
-    public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
-        String method = "delete";
-        requestManager = FactoryRequest.getRequest(method);
-        requestManager.setMethod(method);
-        requestManager.setEndPoint(endPoint);
-        response = requestManager.makeRequest();
-        Log.getInstance().getLog().info(response);
-    }
 
-    /**
-     * Makes a request for create a Board.
-     */
-    @Before(order = 1, value = "@create-board")
+    @Before(order = 2, value = "@create-list")
     public void beforeScenario() {
-        String endPoint = "/boards/";
+        String endPoint = "/lists/";
         String method = "post";
-        String data = "{ \"name\":\"New board test in hook\" }";
+        String data = "{ \"name\":\"New list test in hook\" ,"
+                + "\"idBoard\":\"" + context.getId() + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
         requestManager.setData(data);
-        response = requestManager.makeRequest();
+        Response response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
         context.setId(response.jsonPath().get("id"));
     }
