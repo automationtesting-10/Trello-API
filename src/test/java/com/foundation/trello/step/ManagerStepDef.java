@@ -22,7 +22,7 @@ public class ManagerStepDef {
     private RequestManagerAbstract requestManager;
     private Response response;
     private Board board;
-    SoftAssert softAssert;
+    private SoftAssert softAssert;
 
     /**
      * This method constructor initializes variables.
