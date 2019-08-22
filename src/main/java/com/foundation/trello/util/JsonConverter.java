@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 public abstract class JsonConverter {
     /**
      * Converts a json to a Criteria instance according on given type.
+     *
      * @param json - String corresponding to json.
      * @param type - Object's type.
      * @return Instance of Object class according on given type.
@@ -34,6 +35,7 @@ public abstract class JsonConverter {
 
     /**
      * Converts an instance of ConvertCriteria class to json.
+     *
      * @param object - Object to be convert to json.
      * @return json corresponding to given Object.
      */
