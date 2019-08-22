@@ -8,6 +8,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
  * This class validates the schema of a request response.
  *
  * @author Josue Rodriguez
+ * @version 0.0.1
  */
 public final class SchemaValidator {
     /**
