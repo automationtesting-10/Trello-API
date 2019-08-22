@@ -80,11 +80,11 @@ public class ManagerStepDef {
     /**
      * This method verifies that the schema response to the requirement is correct.
      *
-     * @param schema The schema parameter defines the input file name schema.
+     * @param schemaJson The schema parameter defines the input file name schema.
      */
     @And("I verify the response schema whit {string}")
-    public void iGetASchema(String schema) {
-        boolean validator = SchemaValidator.validator(response, "schema/" + schema + "Schema.json");
+    public void iGetASchema(String schemaJson) {
+        boolean validator = SchemaValidator.validator(response, schemaJson);
         softAssert.assertTrue(validator);
     }
 }
