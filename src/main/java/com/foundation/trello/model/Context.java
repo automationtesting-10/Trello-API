@@ -20,7 +20,7 @@ public class Context {
     }
 
     /**
-     * This method getBoard() returns a board.
+     * This method returns the board attribute.
      *
      * @return a board.
      */
@@ -29,7 +29,7 @@ public class Context {
     }
 
     /**
-     * This method is used to get id.
+     * This method returns the id attribute.
      *
      * @return id as string.
      */
@@ -38,9 +38,9 @@ public class Context {
     }
 
     /**
-     * This method is used to set id.
+     * This method sets the id attribute.
      *
-     * @param id the id parameter defines of input id.
+     * @param id defines the input id.
      */
     public void setId(String id) {
         this.id = id;

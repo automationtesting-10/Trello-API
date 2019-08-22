@@ -21,7 +21,7 @@ public final class BoardHook {
     /**
      * This method constructor initializes the variables.
      *
-     * @param context initialize board and context attributes.
+     * @param context initializes context attribute.
      */
     public BoardHook(Context context) {
         this.context = context;

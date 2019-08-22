@@ -62,7 +62,6 @@ public class ManagerStepDef {
         response = requestManager.makeRequest();
         String id = response.body().jsonPath().get("id");
         context.setId(id);
-
     }
 
     /**
