@@ -10,7 +10,7 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * CardHook BoardHook class create the tagger hooks for the steps.
+ * CardHook class create the tagger hooks for the steps.
  *
  * @author Maday Alcala.
  * @version 0.0.1
@@ -50,8 +50,10 @@ public final class CardHook {
     public void beforeScenario() {
         String endPoint = "/cards/";
         String method = "post";
-        String data = "{ \"name\":\"" + NamesGenerator.newName() + "\" ,"
-                + "\"idList\":\"" + context.getId() + "\"}";
+        String name = NamesGenerator.newName();
+        String idList = context.getId();
+        String data = "{ \"name\":\"" + name + "\" ,"
+                + "\"idList\":\"" + idList + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

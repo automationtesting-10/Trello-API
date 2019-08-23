@@ -9,7 +9,7 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * ListHook BoardHook class create the tagger hooks for the steps.
+ * ListHook class create the tagger hooks for the steps.
  *
  * @author Maday Alcala.
  * @version 0.0.1
@@ -35,8 +35,10 @@ public final class ListHook {
     public void beforeScenario() {
         String endPoint = "/lists/";
         String method = "post";
-        String data = "{ \"name\":\"" + NamesGenerator.newName() + "\" ,"
-                + "\"idBoard\":\"" + context.getId() + "\"}";
+        String name = NamesGenerator.newName();
+        String idBoard = context.getId();
+        String data = "{ \"name\":\"" + name + "\" ,"
+                + "\"idBoard\":\"" + idBoard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

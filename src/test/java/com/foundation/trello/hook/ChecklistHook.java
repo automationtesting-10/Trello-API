@@ -10,12 +10,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class create the tagger hooks for the steps.
+ * ChecklistHook class create the tagger hooks for the steps.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
+public class ChecklistHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -25,16 +25,16 @@ public final class BoardHook {
      *
      * @param context initializes context attribute.
      */
-    public BoardHook(Context context) {
+    public ChecklistHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for delete a Checklist by id.
      */
-    @After(order = 2, value = "@delete-board")
+    @After("@delete-checklist")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
+        String endPoint = "/checklists/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -44,14 +44,16 @@ public final class BoardHook {
     }
 
     /**
-     * Makes a request for create a Board.
+     * Makes a request for create a Checklist.
      */
-    @Before(order = 1, value = "@create-board")
+    @Before(order = 4, value = "@create-checklist")
     public void beforeScenario() {
-        String endPoint = "/boards/";
+        String endPoint = "/checklists/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String data = "{ \"name\":\"" + name + "\"}";
+        String idCard = context.getId();
+        String data = "{ \"name\":\"" + name + "\" ,"
+                + "\"idCard\":\"" + idCard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
@@ -61,3 +63,4 @@ public final class BoardHook {
         context.setId(response.jsonPath().get("id"));
     }
 }
+

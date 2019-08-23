@@ -4,6 +4,7 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.NamesGenerator;
+
 import com.foundation.trello.util.SchemaValidator;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -16,7 +17,7 @@ import org.testng.asserts.SoftAssert;
 /**
  * ManagerStepDef class.
  *
- * @author Raul Choque, Josue Rodriguez.
+ * @author Raul Choque, Josue Rodriguez, Maday Alcala.
  * @version 0.0.1
  */
 public class ManagerStepDef {

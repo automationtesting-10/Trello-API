@@ -10,12 +10,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class create the tagger hooks for the steps.
+ * CardHook BoardHook class create the tagger hooks for the steps.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
+public final class LabelHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -25,16 +25,16 @@ public final class BoardHook {
      *
      * @param context initializes context attribute.
      */
-    public BoardHook(Context context) {
+    public LabelHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for delete a Card by id.
      */
-    @After(order = 2, value = "@delete-board")
+    @After("@delete-label")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
+        String endPoint = "/labels/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -44,14 +44,17 @@ public final class BoardHook {
     }
 
     /**
-     * Makes a request for create a Board.
+     * Makes a request for create a Card.
      */
-    @Before(order = 1, value = "@create-board")
+    @Before(order = 3, value = "@create-label")
     public void beforeScenario() {
-        String endPoint = "/boards/";
+        String endPoint = "/labels/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String data = "{ \"name\":\"" + name + "\"}";
+        String idBoard = context.getId();
+        String data = "{ \"name\":\" " + name + "\" ,"
+                + "\"color\":\"red\" ,"
+                + "\"idBoard\":\"" + idBoard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

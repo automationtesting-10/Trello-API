@@ -10,12 +10,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class create the tagger hooks for the steps.
+ * OrganizationHook class create the tagger hooks for the steps.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
+public final class OrganizationHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -25,16 +25,16 @@ public final class BoardHook {
      *
      * @param context initializes context attribute.
      */
-    public BoardHook(Context context) {
+    public OrganizationHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for delete a Organization by id.
      */
-    @After(order = 2, value = "@delete-board")
+    @After("@delete-organization")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
+        String endPoint = "/organizations/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -44,14 +44,14 @@ public final class BoardHook {
     }
 
     /**
-     * Makes a request for create a Board.
+     * Makes a request for create a Organization.
      */
-    @Before(order = 1, value = "@create-board")
+    @Before("@create-organization")
     public void beforeScenario() {
-        String endPoint = "/boards/";
+        String endPoint = "/organizations/";
         String method = "post";
-        String name = NamesGenerator.newName();
-        String data = "{ \"name\":\"" + name + "\"}";
+        String displayName = NamesGenerator.newName();
+        String data = "{ \"displayName\":\"" + displayName + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
