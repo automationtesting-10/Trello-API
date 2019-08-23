@@ -2,7 +2,7 @@ Feature: Acceptance test of "card", CRUD's(Create, Read, Update and Delete)
 
   @create-board @create-list @delete-card
   Scenario: create new card with a name
-    Given I create a "POST" request to "/cards/" endpoint
+    Given I create a POST request to /cards/ endpoint
       And I set up the data:
       """
         {
@@ -12,18 +12,18 @@ Feature: Acceptance test of "card", CRUD's(Create, Read, Update and Delete)
       """
     When I send the request
     Then I get a 200 status code as response
-      And I verify the response schema with "Card"
+      And I verify the response schema with Card
 
   @create-board @create-list @create-card
-  Scenario: I get id of a card
-    Given I create a "GET" request to "/cards/{id}" endpoint
+  Scenario: Read a card by id
+    Given I create a GET request to /cards/{idCard} endpoint
     When I send the request
     Then I get a 200 status code as response
-      And I verify the response schema with "Card"
+      And I verify the response schema with Card
 
   @create-board @create-list @create-card
-  Scenario: I put name of card
-    Given I create a "PUT" request to "/cards/{id}" endpoint
+  Scenario: Update name's card
+    Given I create a PUT request to /cards/{idCard} endpoint
       And I set up the data:
       """
         {
@@ -32,11 +32,11 @@ Feature: Acceptance test of "card", CRUD's(Create, Read, Update and Delete)
       """
     When I send the request
     Then I get a 200 status code as response
-      And I verify the response schema with "Card"
+      And I verify the response schema with Card
 
   @create-board @create-list @create-card
-  Scenario: I delete card for id
-    Given I create a "DELETE" request to "/cards/{id}" endpoint
+  Scenario: Delete card by id
+    Given I create a DELETE request to /cards/{idCard} endpoint
     When I send the request
     Then I get a 200 status code as response
-      And I verify the response schema with "Card"
+      And I verify the response schema with Card
