@@ -4,6 +4,7 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.Log;
+import com.foundation.trello.util.NamesGenerator;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
@@ -49,9 +50,12 @@ public final class LabelHook {
     public void beforeScenario() {
         String endPoint = "/labels/";
         String method = "post";
-        String data = "{ \"name\":\"New label test in hook\" ,"
-                + "\"color\":\"red\" ,"
-                + "\"idBoard\":\"" + context.getId() + "\"}";
+        String name = NamesGenerator.newName();
+        String color = NamesGenerator.newName();
+        String idBoard = context.getId();
+        String data = "{ \"name\":\"\" " + name + " \"\" ,"
+                + "\"color\":\" " + color + " \" ,"
+                + "\"idBoard\":\"" + idBoard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

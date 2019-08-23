@@ -4,6 +4,7 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.Log;
+import com.foundation.trello.util.NamesGenerator;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
@@ -34,8 +35,10 @@ public final class ListHook {
     public void beforeScenario() {
         String endPoint = "/lists/";
         String method = "post";
-        String data = "{ \"name\":\"New list test in hook\" ,"
-                + "\"idBoard\":\"" + context.getId() + "\"}";
+        String name = NamesGenerator.newName();
+        String idBoard = context.getId();
+        String data = "{ \"name\":\"" + name + "\" ,"
+                + "\"idBoard\":\"" + idBoard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

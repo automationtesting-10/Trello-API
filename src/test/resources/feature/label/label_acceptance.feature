@@ -6,8 +6,8 @@ Feature: Acceptance test of "label", CRUD's(Create, Read, Update and Delete)
     And I set up the data:
       """
         {
-          "name": "New list test",
-          "color": "red",
+          "name": "[New list test]",
+          "color": "[red]",
           "idBoard": "{idBoard}"
         }
       """
@@ -28,7 +28,7 @@ Feature: Acceptance test of "label", CRUD's(Create, Read, Update and Delete)
     And I set up the data:
       """
         {
-          "name": "New label with the new name"
+          "name": "[New label with the new name]"
         }
       """
     When I send the request

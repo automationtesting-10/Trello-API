@@ -6,7 +6,7 @@ Feature: Acceptance test of "card", CRUD's(Create, Read, Update and Delete)
       And I set up the data:
       """
         {
-          "name":"Here Josue",
+          "name":"[New card test]",
           "idList":"{idList}"
         }
       """
@@ -27,7 +27,7 @@ Feature: Acceptance test of "card", CRUD's(Create, Read, Update and Delete)
       And I set up the data:
       """
         {
-          "name":"My new name is Josue"
+          "name":"[New card with the new name]"
         }
       """
     When I send the request

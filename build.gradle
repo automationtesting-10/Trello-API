@@ -67,8 +67,12 @@ dependencies {
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer
     testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '4.7.1'
     compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
+    // This dependency help us to generate logs.
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    // This dependency help us to validate schemas.
     compile 'io.rest-assured:json-schema-validator:4.0.0'
+    // This dependency help us to generate aleatory names.
+    implementation 'com.github.javafaker:javafaker:1.0.1'
 }
 
 checkstyle {
