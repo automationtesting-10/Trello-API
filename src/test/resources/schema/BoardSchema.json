@@ -51,11 +51,11 @@
     },
     "descData": {
       "$id": "#/properties/descData",
-      "type": "null",
+      "type": "string",
       "title": "The Descdata Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        ""
       ]
     },
     "closed": {
@@ -69,11 +69,11 @@
     },
     "idOrganization": {
       "$id": "#/properties/idOrganization",
-      "type": "null",
+      "type": "string",
       "title": "The Idorganization Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        ""
       ]
     },
     "pinned": {
@@ -242,18 +242,18 @@
         },
         "backgroundImage": {
           "$id": "#/properties/prefs/properties/backgroundImage",
-          "type": "null",
+          "type": "object",
           "title": "The Backgroundimage Schema",
-          "default": null,
+          "default": "object",
           "examples": [
             null
           ]
         },
         "backgroundImageScaled": {
           "$id": "#/properties/prefs/properties/backgroundImageScaled",
-          "type": "null",
+          "type": "object",
           "title": "The Backgroundimagescaled Schema",
-          "default": null,
+          "default": "object",
           "examples": [
             null
           ]
