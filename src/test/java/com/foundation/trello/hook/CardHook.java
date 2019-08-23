@@ -52,7 +52,7 @@ public final class CardHook {
         String endPoint = "/cards/";
         String method = "post";
         String data = "{ \"name\":\"New card test in hook\" ,"
-                + "\"idList\":\"" + context.getId() + "\"}";
+                + "\"idList\":\"" + context.getMap().get("idList") + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

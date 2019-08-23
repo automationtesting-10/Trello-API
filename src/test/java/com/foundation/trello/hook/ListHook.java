@@ -35,7 +35,7 @@ public final class ListHook {
         String endPoint = "/lists/";
         String method = "post";
         String data = "{ \"name\":\"New list test in hook\" ,"
-                + "\"idBoard\":\"" + context.getMap().get("idList") + "\"}";
+                + "\"idBoard\":\"" + context.getMap().get("idBoard") + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
