@@ -196,11 +196,11 @@
         },
         "due": {
           "$id": "#/properties/badges/properties/due",
-          "type": "null",
+          "type": "string",
           "title": "The Due Schema",
-          "default": null,
+          "default": "",
           "examples": [
-            null
+            ""
           ]
         },
         "dueComplete": {
@@ -259,38 +259,38 @@
     },
     "descData": {
       "$id": "#/properties/descData",
-      "type": "null",
+      "type": "string",
       "title": "The Descdata Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        ""
       ]
     },
     "due": {
       "$id": "#/properties/due",
-      "type": "null",
+      "type": "date",
       "title": "The Due Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        ""
       ]
     },
     "dueReminder": {
       "$id": "#/properties/dueReminder",
-      "type": "null",
+      "type": "string",
       "title": "The Duereminder Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        ""
       ]
     },
     "email": {
       "$id": "#/properties/email",
-      "type": "null",
+      "type": "string",
       "title": "The Email Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        "name@e-mail.com"
       ]
     },
     "idBoard": {
@@ -339,11 +339,11 @@
     },
     "idAttachmentCover": {
       "$id": "#/properties/idAttachmentCover",
-      "type": "null",
+      "type": "string",
       "title": "The Idattachmentcover Schema",
-      "default": null,
+      "default": "",
       "examples": [
-        null
+        ""
       ]
     },
     "labels": {

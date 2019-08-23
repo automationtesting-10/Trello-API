@@ -3,6 +3,7 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
+import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -39,13 +40,16 @@ public class ManagerStepDef {
      * @param method   The method parameter defines a input method.
      * @param endPoint The endpoint parameter defines a input endpoint.
      */
-    @Given("I create a {string} request to {string} endpoint")
+    @Given("I create a ([[GET][POST][DELETE][PUT]]+) request to (.*) endpoint")
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         String completeEndPoint = context.getId() == null
                 ? endPoint : endPoint.replaceAll("\\{(.*?)\\}", context.getId());
         requestManager.setEndPoint(completeEndPoint);
+    }
+    @Given("I have (\\d+) cukes in my belly")
+    public void i_have_n_cukes_in_my_belly(int cukes) {
     }
 
     /**
@@ -86,7 +90,7 @@ public class ManagerStepDef {
      *
      * @param schemaName The schema parameter defines the input file name schema.
      */
-    @And("I verify the response schema with {string}")
+    @And("I verify the response schema with (.*)")
     public void iGetASchema(String schemaName) {
         boolean validator = SchemaValidator.validator(response, schemaName);
         softAssert.assertTrue(validator);
