@@ -1,5 +1,8 @@
 package com.foundation.trello.util;
 
+import com.foundation.trello.model.Context;
+
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,32 +11,22 @@ import java.util.regex.Pattern;
  *
  * @author Josue Rodriguez.
  */
-public final class Regex {
+public class Regex {
     private static Regex ourInstance;
-    private String string;
-    private String[] ids;
 
     /**
      * This method constructor initializes the parameters.
-     *
-     * @param string The oldString parameter defines the endpoint input.
-     * @param ids The id parameter defines the list of id.
      */
-    private Regex(String string, String[] ids) {
-        this.string = string;
-        this.ids = ids;
+    private Regex() {
     }
 
     /**
      * This method verifies if of object Regex was created, if not creates it.
-     *
-     * @param string The string parameter defines the endpoint input.
-     * @param ids The id parameter defines the list of id.
      * @return a regex.
      */
-    public static Regex getInstance(String string, String[] ids) {
+    public static Regex getInstance() {
         if (ourInstance == null) {
-            ourInstance = new Regex(string, ids);
+            ourInstance = new Regex();
         }
         return ourInstance;
     }
@@ -41,14 +34,16 @@ public final class Regex {
     /**
      * This method returns a new endpoint.
      *
+     * @param endpoint The string parameter defines the endpoint input.
+     * @param id The id parameter defines the list of id.
      * @return a string.
      */
-    public String getString() {
-        Pattern pattern = Pattern.compile("\\{(.*?)\\}");
-        for (int index = 0; index < ids.length; index++) {
-            Matcher matcher = pattern.matcher(string);
-            string = matcher.replaceFirst(ids[index]);
+    public String getString(String endpoint, Map<String, String> id) {
+        for (Map.Entry<String,String> entry : id.entrySet()){
+            Pattern pattern = Pattern.compile("\\{"+entry.getKey()+"\\}");
+            Matcher matcher = pattern.matcher(endpoint);
+            endpoint = matcher.replaceAll(entry.getValue());
         }
-        return string;
+        return endpoint;
     }
 }

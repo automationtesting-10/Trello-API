@@ -35,13 +35,14 @@ public final class ListHook {
         String endPoint = "/lists/";
         String method = "post";
         String data = "{ \"name\":\"New list test in hook\" ,"
-                + "\"idBoard\":\"" + context.getId() + "\"}";
+                + "\"idBoard\":\"" + context.getMap().get("idList") + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
         requestManager.setData(data);
         Response response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        //context.setId(response.jsonPath().get("id"));
+        context.getMap().put("idList",response.jsonPath().get("id"));
     }
 }

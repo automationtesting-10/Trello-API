@@ -1,5 +1,8 @@
 package com.foundation.trello.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * This Context class is used for implement objects.
  *
@@ -9,6 +12,7 @@ package com.foundation.trello.model;
 public class Context {
     private String id;
     private Board board;
+    private Map<String, String> map;
 
     /**
      * This method constructor initializes the variables.
@@ -17,6 +21,7 @@ public class Context {
      */
     public Context(Board board) {
         this.board = board;
+        map = new HashMap<>();
     }
 
     /**
@@ -44,5 +49,13 @@ public class Context {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
     }
 }

@@ -2,6 +2,7 @@ package com.foundation.trello.model;
 
 import com.foundation.trello.util.Log;
 import com.foundation.trello.util.ReadConfiguration;
+import com.foundation.trello.util.Regex;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.Assert;

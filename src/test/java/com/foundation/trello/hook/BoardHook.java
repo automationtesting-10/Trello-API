@@ -8,6 +8,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
+import java.util.HashMap;
+
 /**
  * BoardHook class create the tagger hooks for the steps.
  *
@@ -33,7 +35,9 @@ public final class BoardHook {
      */
     @After(order = 2, value = "@delete-board")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
+        String id = context.getMap().containsKey("idBoard")
+                ? context.getMap().get("idBoard"): context.getMap().get("id");
+        String endPoint = "/boards/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -56,6 +60,7 @@ public final class BoardHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+//        context.setId(response.jsonPath().get("id"));
+        context.getMap().put("idBoard",response.jsonPath().get("id"));
     }
 }
