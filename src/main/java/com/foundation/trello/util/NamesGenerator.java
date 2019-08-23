@@ -14,7 +14,7 @@ import java.util.Date;
 public final class NamesGenerator {
     private static String newName;
     private static String suffix;
-    private static String prefix;
+    private static final String PREFIX = "AT-10";
     private static Date actual;
     private static Faker faker;
 
@@ -31,18 +31,8 @@ public final class NamesGenerator {
      * @return 'newName' that represent a name with its respective suffix and prefix.
      */
     public static String newName() {
-        newName = prefix() + " " + aleatoryName() + " " + suffix();
+        newName = PREFIX + " " + aleatoryName() + " " + suffix();
         return newName;
-    }
-
-    /**
-     * This class returns the string "AT10" as prefix.
-     *
-     * @return a prefix in string type.
-     */
-    public static String prefix() {
-        prefix = "AT10";
-        return prefix;
     }
 
     /**
