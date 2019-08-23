@@ -65,4 +65,3 @@ public class ChecklistHook {
         context.getMapIds().put("idChecklist", response.jsonPath().get("id"));
     }
 }
-

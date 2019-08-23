@@ -34,7 +34,7 @@ public final class Regex {
      * This method returns a new endpoint.
      *
      * @param endpoint The string parameter defines the endpoint input.
-     * @param id       The id parameter defines the list of id.
+     * @param id The id parameter defines the list of id.
      * @return a string.
      */
     public String replaceID(String endpoint, Map<String, String> id) {
@@ -46,4 +46,3 @@ public final class Regex {
         return endpoint;
     }
 }
-
