@@ -34,7 +34,9 @@ public final class LabelHook {
      */
     @After("@delete-label")
     public void afterScenario() {
-        String endPoint = "/labels/".concat(context.getId());
+        String id = context.getMapIds().containsKey("idLabel")
+                ? context.getMapIds().get("idLabel") : context.getMapIds().get("id");
+        String endPoint = "/labels/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -51,7 +53,7 @@ public final class LabelHook {
         String endPoint = "/labels/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String idBoard = context.getId();
+        String idBoard = context.getMapIds().get("idBoard");
         String data = "{ \"name\":\" " + name + "\" ,"
                 + "\"color\":\"red\" ,"
                 + "\"idBoard\":\"" + idBoard + "\"}";
@@ -61,6 +63,6 @@ public final class LabelHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        context.getMapIds().put("idLabel", response.jsonPath().get("id"));
     }
 }

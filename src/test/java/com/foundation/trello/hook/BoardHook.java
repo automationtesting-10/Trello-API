@@ -34,7 +34,9 @@ public final class BoardHook {
      */
     @After(order = 2, value = "@delete-board")
     public void afterScenario() {
-        String endPoint = "/boards/".concat(context.getId());
+        String id = context.getMapIds().containsKey("idBoard")
+                ? context.getMapIds().get("idBoard") : context.getMapIds().get("id");
+        String endPoint = "/boards/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -58,6 +60,6 @@ public final class BoardHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        context.getMapIds().put("idBoard", response.jsonPath().get("id"));
     }
 }
