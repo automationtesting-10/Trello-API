@@ -1,8 +1,9 @@
 package com.foundation.trello.util;
 
+import com.github.javafaker.Faker;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 
 /**
  * This class generates random names with their respective suffixes and prefixes.
@@ -15,6 +16,7 @@ public final class NamesGenerator {
     private static String suffix;
     private static String prefix;
     private static Date actual;
+    private static Faker faker;
 
     /**
      * This is the constructor method that initializes the variables.
@@ -61,14 +63,12 @@ public final class NamesGenerator {
      * @return the variable 'newName' which represents a random string name.
      */
     public static String aleatoryName() {
-        char n;
-        Random rnd = new Random();
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < 7; i++) {
-            n = (char) (rnd.nextDouble() * 26.0 + 65.0);
-            buf.append(n);
-            newName = buf.toString().toLowerCase();
-        }
+        faker = new Faker();
+        newName = faker.name().firstName();
         return newName;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(newName());
     }
 }
