@@ -63,13 +63,12 @@ public final class NamesGenerator {
     public static String aleatoryName() {
         char n;
         Random rnd = new Random();
-        String string = "";
+        StringBuffer buf = new StringBuffer();
         for (int i = 0; i < 7; i++) {
             n = (char) (rnd.nextDouble() * 26.0 + 65.0);
-            string += n;
-            string.toLowerCase();
+            buf.append(n);
+            newName = buf.toString().toLowerCase();
         }
-        newName = string.toLowerCase();
         return newName;
     }
 }
