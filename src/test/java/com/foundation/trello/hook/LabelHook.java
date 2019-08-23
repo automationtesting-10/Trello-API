@@ -9,12 +9,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * CardHook class create the tagger hooks for the steps.
+ * LabelHook class create the tagger hooks for the steps.
  *
  * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class CardHook {
+public final class LabelHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -24,16 +24,16 @@ public final class CardHook {
      *
      * @param context initializes context attribute.
      */
-    public CardHook(Context context) {
+    public LabelHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Card by id.
+     * Makes a request for delete a Label by id.
      */
-    @After(order = 1, value = "@delete-card")
+    @After("@delete-label")
     public void afterScenario() {
-        String endPoint = "/cards/".concat(context.getId());
+        String endPoint = "/labels/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -45,12 +45,13 @@ public final class CardHook {
     /**
      * Makes a request for create a Card.
      */
-    @Before(order = 3, value = "@create-card")
+    @Before("@create-label")
     public void beforeScenario() {
-        String endPoint = "/cards/";
+        String endPoint = "/labels/";
         String method = "post";
-        String data = "{ \"name\":\"New card test in hook\" ,"
-                + "\"idList\":\"" + context.getId() + "\"}";
+        String data = "{ \"name\":\"New label test in hook\" ,"
+                + "\"color\":\"red\" ,"
+                + "\"idBoard\":\"" + context.getId() + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);

@@ -3,7 +3,6 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
-import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -47,9 +46,6 @@ public class ManagerStepDef {
         String completeEndPoint = context.getId() == null
                 ? endPoint : endPoint.replaceAll("\\{(.*?)\\}", context.getId());
         requestManager.setEndPoint(completeEndPoint);
-    }
-    @Given("I have (\\d+) cukes in my belly")
-    public void i_have_n_cukes_in_my_belly(int cukes) {
     }
 
     /**

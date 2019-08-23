@@ -9,12 +9,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * CardHook class create the tagger hooks for the steps.
+ * OrganizationHook class create the tagger hooks for the steps.
  *
  * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class CardHook {
+public final class OrganizationHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -24,16 +24,16 @@ public final class CardHook {
      *
      * @param context initializes context attribute.
      */
-    public CardHook(Context context) {
+    public OrganizationHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Card by id.
+     * Makes a request for delete a Organization by id.
      */
-    @After(order = 1, value = "@delete-card")
+    @After("@delete-organization")
     public void afterScenario() {
-        String endPoint = "/cards/".concat(context.getId());
+        String endPoint = "/organizations/".concat(context.getId());
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -43,14 +43,13 @@ public final class CardHook {
     }
 
     /**
-     * Makes a request for create a Card.
+     * Makes a request for create a Organization.
      */
-    @Before(order = 3, value = "@create-card")
+    @Before("@create-organization")
     public void beforeScenario() {
-        String endPoint = "/cards/";
+        String endPoint = "/organizations/";
         String method = "post";
-        String data = "{ \"name\":\"New card test in hook\" ,"
-                + "\"idList\":\"" + context.getId() + "\"}";
+        String data = "{ \"displayName\":\"New organization test in hook\" }";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
