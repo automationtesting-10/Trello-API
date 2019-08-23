@@ -36,7 +36,7 @@ public final class NamesGenerator {
     }
 
     /**
-     * This class takes the current date and returns it as a string in the variable suffix.
+     * This method takes the current date and returns it as a string in the variable suffix.
      *
      * @return a suffix in string type.
      */
