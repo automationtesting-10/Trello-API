@@ -7,7 +7,7 @@ Feature: Acceptance test of "label", CRUD's(Create, Read, Update and Delete)
       """
         {
           "name": "[New list test]",
-          "color": "[red]",
+          "color": "red",
           "idBoard": "{idBoard}"
         }
       """

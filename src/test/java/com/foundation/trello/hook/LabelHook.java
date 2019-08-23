@@ -10,7 +10,7 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * LabelHook class create the tagger hooks for the steps.
+ * CardHook BoardHook class create the tagger hooks for the steps.
  *
  * @author Maday Alcala.
  * @version 0.0.1
@@ -30,7 +30,7 @@ public final class LabelHook {
     }
 
     /**
-     * Makes a request for delete a Label by id.
+     * Makes a request for delete a Card by id.
      */
     @After("@delete-label")
     public void afterScenario() {
@@ -46,15 +46,14 @@ public final class LabelHook {
     /**
      * Makes a request for create a Card.
      */
-    @Before("@create-label")
+    @Before(order = 3, value = "@create-label")
     public void beforeScenario() {
         String endPoint = "/labels/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String color = NamesGenerator.newName();
         String idBoard = context.getId();
-        String data = "{ \"name\":\"\" " + name + " \"\" ,"
-                + "\"color\":\" " + color + " \" ,"
+        String data = "{ \"name\":\" " + name + "\" ,"
+                + "\"color\":\"red\" ,"
                 + "\"idBoard\":\"" + idBoard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
