@@ -34,7 +34,9 @@ public class ChecklistHook {
      */
     @After("@delete-checklist")
     public void afterScenario() {
-        String endPoint = "/checklists/".concat(context.getId());
+        String id = context.getMapIds().containsKey("idChecklist")
+                ? context.getMapIds().get("idChecklist") : context.getMapIds().get("id");
+        String endPoint = "/checklists/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -51,7 +53,7 @@ public class ChecklistHook {
         String endPoint = "/checklists/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String idCard = context.getId();
+        String idCard = context.getMapIds().get("idCard");
         String data = "{ \"name\":\"" + name + "\" ,"
                 + "\"idCard\":\"" + idCard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
@@ -60,7 +62,6 @@ public class ChecklistHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        context.getMapIds().put("idChecklist", response.jsonPath().get("id"));
     }
 }
-

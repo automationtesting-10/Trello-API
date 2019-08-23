@@ -5,6 +5,7 @@ import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.NamesGenerator;
 
+import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -45,8 +46,7 @@ public class ManagerStepDef {
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
-        String completeEndPoint = context.getId() == null
-                ? endPoint : endPoint.replaceAll("\\{(.*?)\\}", context.getId());
+        String completeEndPoint = Regex.getInstance().replaceID(endPoint, context.getMapIds());
         requestManager.setEndPoint(completeEndPoint);
     }
 
@@ -59,8 +59,7 @@ public class ManagerStepDef {
     public void iSetUpData(String data) {
         String aleatoryName = data.replaceAll("\\[(.*?)\\]", NamesGenerator.newName());
         requestManager.setData(aleatoryName);
-        String completeData = context.getId() == null
-                ? data : data.replaceAll("\\{(.*?)\\}", context.getId());
+        String completeData = Regex.getInstance().replaceID(data, context.getMapIds());
         requestManager.setData(completeData);
     }
 
@@ -71,7 +70,7 @@ public class ManagerStepDef {
     public void sentRequest() {
         response = requestManager.makeRequest();
         String id = response.body().jsonPath().get("id");
-        context.setId(id);
+        context.getMapIds().put("id", id);
     }
 
     /**

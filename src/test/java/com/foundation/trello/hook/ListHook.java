@@ -36,7 +36,7 @@ public final class ListHook {
         String endPoint = "/lists/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String idBoard = context.getId();
+        String idBoard = context.getMapIds().get("idBoard");
         String data = "{ \"name\":\"" + name + "\" ,"
                 + "\"idBoard\":\"" + idBoard + "\"}";
         requestManager = FactoryRequest.getRequest(method);
@@ -45,6 +45,6 @@ public final class ListHook {
         requestManager.setData(data);
         Response response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        context.getMapIds().put("idList", response.jsonPath().get("id"));
     }
 }

@@ -34,7 +34,9 @@ public final class CardHook {
      */
     @After(order = 1, value = "@delete-card")
     public void afterScenario() {
-        String endPoint = "/cards/".concat(context.getId());
+        String id = context.getMapIds().containsKey("idCard")
+                ? context.getMapIds().get("idCard") : context.getMapIds().get("id");
+        String endPoint = "/cards/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -51,7 +53,7 @@ public final class CardHook {
         String endPoint = "/cards/";
         String method = "post";
         String name = NamesGenerator.newName();
-        String idList = context.getId();
+        String idList = context.getMapIds().get("idList");
         String data = "{ \"name\":\"" + name + "\" ,"
                 + "\"idList\":\"" + idList + "\"}";
         requestManager = FactoryRequest.getRequest(method);
@@ -60,6 +62,6 @@ public final class CardHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        context.getMapIds().put("idCard", response.jsonPath().get("id"));
     }
 }
