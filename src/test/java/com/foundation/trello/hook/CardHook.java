@@ -4,6 +4,7 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.Log;
+import com.foundation.trello.util.NamesGenerator;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
@@ -49,7 +50,7 @@ public final class CardHook {
     public void beforeScenario() {
         String endPoint = "/cards/";
         String method = "post";
-        String data = "{ \"name\":\"New card test in hook\" ,"
+        String data = "{ \"name\":\"" + NamesGenerator.newName() + "\" ,"
                 + "\"idList\":\"" + context.getId() + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);

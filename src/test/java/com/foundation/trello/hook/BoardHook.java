@@ -4,6 +4,7 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.Log;
+import com.foundation.trello.util.NamesGenerator;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
@@ -49,7 +50,7 @@ public final class BoardHook {
     public void beforeScenario() {
         String endPoint = "/boards/";
         String method = "post";
-        String data = "{ \"name\":\"New board test in hook\" }";
+        String data = "{ \"name\":\"" + NamesGenerator.newName() + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
