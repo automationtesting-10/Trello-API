@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * This class generates random names with their respective suffixes and prefixes.
  *
- * @author Maday Alcala Cuba.
+ * @author Maday Alcala.
  * @version 0.0.1
  */
 public final class NamesGenerator {
@@ -66,9 +66,5 @@ public final class NamesGenerator {
         faker = new Faker();
         newName = faker.name().firstName();
         return newName;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(newName());
     }
 }

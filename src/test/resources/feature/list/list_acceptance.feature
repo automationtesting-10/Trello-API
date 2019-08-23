@@ -6,7 +6,7 @@ Feature: Acceptance test of "list", CRUD's(Create, Read, Update and Delete)
       And I set up the data:
       """
         {
-          "name": "New list test",
+          "name": "[New list test]",
           "idBoard": "{idBoard}"
         }
       """
@@ -27,7 +27,7 @@ Feature: Acceptance test of "list", CRUD's(Create, Read, Update and Delete)
       And I set up the data:
       """
         {
-          "name": "New list with the new name"
+          "name": "[New list with the new name]"
         }
       """
     When I send the request
