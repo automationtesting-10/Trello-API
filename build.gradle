@@ -14,7 +14,6 @@ plugins {
     id 'pmd'
     id 'checkstyle'
     id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.8"
-
 }
 
 group 'AT10-Group01'
