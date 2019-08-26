@@ -14,7 +14,7 @@ import org.testng.annotations.AfterTest;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"},
         glue = {"com/foundation/trello/step", "com/foundation/trello/hook"},
-        features = {"src/test/resources/feature"})
+        features = {"src/test/resources/feature/checklist/checklist_functional.feature"})
 
 public class Runner extends AbstractTestNGCucumberTests {
     /**

@@ -64,4 +64,21 @@ public class ChecklistHook {
         Log.getInstance().getLog().info(response);
         context.getMapIds().put("idChecklist", response.jsonPath().get("id"));
     }
+
+    @Before(order = 5, value = "@create-checkitem")
+    public void beforeScenarioCheckitem() {
+        String idCheckList = context.getMapIds().get("idChecklist");
+        String endPoint = "//checklists/"+ idCheckList+"/checkItems/";
+        String method = "post";
+        String name = NamesGenerator.newName();
+        String data = "{ \"name\":\"" + name + "\" }";
+        requestManager = FactoryRequest.getRequest(method);
+        requestManager.setMethod(method);
+        requestManager.setEndPoint(endPoint);
+        requestManager.setData(data);
+        response = requestManager.makeRequest();
+        Log.getInstance().getLog().info(response);
+        //context.getMapIds().put("idChecklist", response.jsonPath().get("idChecklist"));
+        context.getMapIds().put("idCheckItem", response.jsonPath().get("id"));
+    }
 }
