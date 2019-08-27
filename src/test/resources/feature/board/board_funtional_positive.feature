@@ -44,7 +44,7 @@ Feature: Functional positive test of Board CUD's (Create, Update and Delete)
       """
         {
            "name":"[<name_board>]",
-           "defaultLists": <default_lists>
+           "defaultLists":<default_lists>
         }
         """
     When I send the request
@@ -62,7 +62,7 @@ Feature: Functional positive test of Board CUD's (Create, Update and Delete)
       """
         {
            "name":"[<name_board>]",
-           "desc": "<description>"
+           "desc":"<description>"
         }
         """
     When I send the request
@@ -281,4 +281,3 @@ Feature: Functional positive test of Board CUD's (Create, Update and Delete)
     | b                                 |
     | new labelNames/blue with big name |
     | 1$b*                              |
-    
