@@ -105,6 +105,9 @@ public class ManagerStepDef {
         context.setId(null);
     }
 
+    /**
+     * This method is used for send the request to the API.
+     */
     @When("I send a request")
     public void iSendARequest() {
         response = requestManager.makeRequest();
