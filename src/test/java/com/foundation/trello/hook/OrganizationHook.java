@@ -30,11 +30,13 @@ public final class OrganizationHook {
     }
 
     /**
-     * Makes a request for delete a Organization by id.
+     * Makes a request for delete an Organization by id.
      */
     @After("@delete-organization")
     public void afterScenario() {
-        String endPoint = "/organizations/".concat(context.getId());
+        String id = context.getMapIds().containsKey("idOrganization")
+                ? context.getMapIds().get("idOrganization") : context.getMapIds().get("id");
+        String endPoint = "/organizations/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -44,7 +46,7 @@ public final class OrganizationHook {
     }
 
     /**
-     * Makes a request for create a Organization.
+     * Makes a request for create an Organization.
      */
     @Before("@create-organization")
     public void beforeScenario() {
@@ -58,6 +60,6 @@ public final class OrganizationHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.setId(response.jsonPath().get("id"));
+        context.getMapIds().put("idOrganization", response.jsonPath().get("id"));
     }
 }

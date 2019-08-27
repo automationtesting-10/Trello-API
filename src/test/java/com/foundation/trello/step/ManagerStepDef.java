@@ -47,6 +47,7 @@ public class ManagerStepDef {
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
+        context.getMapIds();
         String completeEndPoint = Regex.getInstance().replaceID(endPoint, context.getMapIds());
         requestManager.setEndPoint(completeEndPoint);
     }
@@ -70,8 +71,8 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-//        String id = response.body().jsonPath().get("id");
-//        context.getMapIds().put("id", id);
+        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("[0].id") : "";
+        context.getMapIds().put("id", id);
     }
 
     /**
@@ -81,8 +82,9 @@ public class ManagerStepDef {
      */
     @Then("I get a {int} status code as response")
     public void getStatusCodeAsResponse(int statusCode) {
-//        softAssert = new SoftAssert();
-        Assert.assertEquals(statusCode, response.getStatusCode());
+        softAssert = new SoftAssert();
+        softAssert.assertEquals(response.getStatusCode(), statusCode);
+        softAssert.assertAll();
     }
 
     /**
@@ -93,6 +95,7 @@ public class ManagerStepDef {
     @And("I verify the response schema with (.*)")
     public void iGetASchema(String schemaName) {
         boolean validator = SchemaValidator.validator(response, schemaName);
+        softAssert = new SoftAssert();
         softAssert.assertTrue(validator);
     }
 

@@ -9,6 +9,12 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
+/**
+ * ActionHook class create the tagger hooks for the steps.
+ *
+ * @author Josue Rodriguez.
+ * @version 0.0.1
+ */
 public class ActionsHook {
     private Context context;
     private Response response;
@@ -47,7 +53,8 @@ public class ActionsHook {
         String idCard = context.getMapIds().get("idCard");
         String endPoint = "/cards/"+idCard+"/actions/comments";
         String method = "post";
-        String data = "{ \"text\":\"new comments for card\"}";
+        String name = NamesGenerator.aleatoryName();
+        String data = "{ \"text\":\""+name+"\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
