@@ -69,7 +69,7 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("[0].id") : "";
+        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
         context.getMapIds().put("id", id);
     }
 

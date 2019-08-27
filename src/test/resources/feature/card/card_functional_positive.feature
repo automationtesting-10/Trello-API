@@ -28,26 +28,12 @@ Feature: Functional test for "card"
     Then I get a 200 status code as response
       And  I verify the response schema with Card
 
-#  @create-board @create-list @create-card @delete-card @delete-board
-#  Scenario: Get the completed checklist items on a card
-#    Given I create a GET request to /cards/{idCard}/checkItemStates endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#      And  I verify the response schema with Card
-
   @create-board @create-list @create-card @create-checklist @delete-checklist @delete-card @delete-board
   Scenario: Get the checklists on a card
     Given I create a GET request to /cards/{idCard}/checklists endpoint
     When I send the request
     Then I get a 200 status code as response
       And  I verify the response schema with Card
-
-#  @create-board @create-list @create-card @delete-card @delete-board
-#  Scenario: Get a specific checkItem on a card
-#    Given I create a GET request to /cards/{idCard}/checkItem/{idCheckItem} endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#      And  I verify the response schema with Card
 
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get the custom field items for a card
@@ -108,7 +94,7 @@ Feature: Functional test for "card"
     |text          |
     |New commentary|
 
-#POST OF CARD
+# POST OF CARD
 
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Add a new comment to a card
@@ -140,7 +126,7 @@ Feature: Functional test for "card"
     |New name CheckList |
 
 
-## DELETE OF CARD
+# DELETE OF CARD
 
   @create-board @create-list @create-card @create-action @delete-card @delete-board
   Scenario: Delete a comment
