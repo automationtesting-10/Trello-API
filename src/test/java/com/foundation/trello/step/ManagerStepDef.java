@@ -4,7 +4,6 @@ import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
 import com.foundation.trello.util.NamesGenerator;
-
 import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
 import cucumber.api.java.en.And;
@@ -12,7 +11,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.asserts.SoftAssert;
 
 /**
@@ -69,8 +70,6 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        String id = response.body().jsonPath().get("id");
-        context.getMapIds().put("id", id);
     }
 
     /**
@@ -81,7 +80,7 @@ public class ManagerStepDef {
     @Then("I get a {int} status code as response")
     public void getStatusCodeAsResponse(int statusCode) {
         softAssert = new SoftAssert();
-        softAssert.assertEquals(statusCode, response.getStatusCode());
+        Assert.assertEquals(response.getStatusCode(), statusCode);
     }
 
     /**
@@ -93,6 +92,11 @@ public class ManagerStepDef {
     public void iGetASchema(String schemaName) {
         boolean validator = SchemaValidator.validator(response, schemaName);
         softAssert.assertTrue(validator);
+    }
+    @AfterMethod
+    public void after(){
+        String id = response.body().jsonPath().get("id");
+        context.getMapIds().put("id", id);
     }
 
     /**

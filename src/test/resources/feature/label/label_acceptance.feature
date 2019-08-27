@@ -23,7 +23,7 @@ Feature: Acceptance test of "label", CRUD's(Create, Read, Update and Delete)
     And I verify the response schema with Label
 
   @create-board @create-label @delete-label @delete-board
-  Scenario: Update a label name
+  Scenario: Update a label
     Given I create a PUT request to /labels/{idLabel} endpoint
     And I set up the data:
       """

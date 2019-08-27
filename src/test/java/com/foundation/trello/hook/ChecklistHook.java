@@ -78,7 +78,7 @@ public class ChecklistHook {
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        //context.getMapIds().put("idChecklist", response.jsonPath().get("idChecklist"));
-        context.getMapIds().put("idCheckItem", response.jsonPath().get("id"));
+        context.getMapIds().put("idChecklist", response.jsonPath().get("idChecklist"));
+        context.getMapIds().put("id", response.jsonPath().get("id"));
     }
 }
