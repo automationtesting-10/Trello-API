@@ -36,7 +36,7 @@ public class ActionsHook {
     public void afterScenario() {
         String idCard = context.getMapIds().get("idCard");
         String idAction = context.getMapIds().get("idAction");
-        String endPoint = "/cards/"+idCard+"/actions/"+idAction+"/comments";
+        String endPoint = "/cards/" + idCard + "/actions/" + idAction + "/comments";
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -51,10 +51,10 @@ public class ActionsHook {
     @Before(order = 4, value = "@create-action")
     public void beforeScenario() {
         String idCard = context.getMapIds().get("idCard");
-        String endPoint = "/cards/"+idCard+"/actions/comments";
+        String endPoint = "/cards/" + idCard + "/actions/comments";
         String method = "post";
         String name = NamesGenerator.aleatoryName();
-        String data = "{ \"text\":\""+name+"\"}";
+        String data = "{ \"text\":\"" + name + "\"}";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
