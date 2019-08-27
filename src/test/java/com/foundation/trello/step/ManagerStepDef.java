@@ -104,4 +104,11 @@ public class ManagerStepDef {
     public void afterClass() {
         context.setId(null);
     }
+
+    @When("I send a request")
+    public void iSendARequest() {
+        response = requestManager.makeRequest();
+        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("[0].id") : "";
+        context.getMapIds().put("id", id);
+    }
 }
