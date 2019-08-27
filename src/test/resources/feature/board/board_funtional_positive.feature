@@ -281,3 +281,4 @@ Feature: Functional positive test of Board CUD's (Create, Update and Delete)
     | b                                 |
     | new labelNames/blue with big name |
     | 1$b*                              |
+    
