@@ -1,5 +1,6 @@
 Feature: Functional test for "card"
 
+#  GET FOR CARD
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get a specific property of a card
     Given I create a GET request to /cards/{idCard}/dateLastActivity endpoint
@@ -77,7 +78,6 @@ Feature: Functional test for "card"
       And  I verify the response schema with Card
 
 # PUT FOR CARD
-
   @create-board @create-list @create-card @create-action @delete-action @delete-board
   Scenario Outline: Update an existing comment
     Given I create a PUT request to /cards/{idCard}/actions/{idAction}/comments endpoint
@@ -94,8 +94,7 @@ Feature: Functional test for "card"
     |text          |
     |New commentary|
 
-# POST OF CARD
-
+# POST FOR CARD
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Add a new comment to a card
     Given I create a POST request to /cards/{idCard}/actions/comments endpoint
@@ -127,7 +126,6 @@ Feature: Functional test for "card"
 
 
 # DELETE OF CARD
-
   @create-board @create-list @create-card @create-action @delete-card @delete-board
   Scenario: Delete a comment
     Given I create a DELETE request to /cards/{idCard}/actions/{idAction}/comments endpoint
