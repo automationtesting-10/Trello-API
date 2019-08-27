@@ -6,7 +6,6 @@ Feature: Negative test of "checklist"
     When I send the request
     Then I get a 404 status code as response
 
-
   Scenario: Create new checklist with a wrong idCard
     Given I create a POST request to /checklists/ endpoint
     And I set up the data:
