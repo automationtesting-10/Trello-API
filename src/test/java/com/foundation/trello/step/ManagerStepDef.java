@@ -12,7 +12,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.asserts.SoftAssert;
 
@@ -81,7 +80,9 @@ public class ManagerStepDef {
      */
     @Then("I get a {int} status code as response")
     public void getStatusCodeAsResponse(int statusCode) {
-        Assert.assertEquals(response.getStatusCode(), statusCode);
+        softAssert = new SoftAssert();
+        softAssert.assertEquals(response.getStatusCode(), statusCode);
+        softAssert.assertAll();
     }
 
     /**
