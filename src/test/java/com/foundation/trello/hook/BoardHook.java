@@ -63,23 +63,4 @@ public final class BoardHook {
         context.getMapIds().put("idBoard", response.jsonPath().get("id"));
         context.getMapIds().put("idBoardNotValid", "5d5157ebc6ea6c0553aa6900");
     }
-
-    /**
-     * Makes a request for create a second Board.
-     */
-    @Before(order = 2, value = "@create-board2")
-    public void beforeScenario2() {
-        String endPoint = "/boards/";
-        String method = "post";
-        String name = NamesGenerator.newName();
-        String data = "{ \"name\":\"" + name + "\"}";
-        requestManager = FactoryRequest.getRequest(method);
-        requestManager.setMethod(method);
-        requestManager.setEndPoint(endPoint);
-        requestManager.setData(data);
-        response = requestManager.makeRequest();
-        Log.getInstance().getLog().info(response);
-        context.getMapIds().put("idBoard2", response.jsonPath().get("id"));
-        context.getMapIds().put("idBoardNotValid", "5d5157ebc6ea6c0553aa6900");
-    }
 }

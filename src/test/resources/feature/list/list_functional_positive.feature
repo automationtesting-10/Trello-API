@@ -27,13 +27,13 @@ Feature: Functional test of "list"
     Then  I get a 200 status code as response
     And I verify the response schema with List
 
-  @create-board @create-board2 @create-list @delete-board
+  @create-board @create-board @create-list @delete-board
   Scenario: Move a list to a new board
     Given I create a PUT request to /lists/{idList}/idBoard endpoint
     And I set up the data:
       """
         {
-          "value": "{idBoard2}"
+          "value": "{idBoard}"
         }
       """
     When I send the request
