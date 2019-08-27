@@ -91,3 +91,4 @@ Feature: Functional test of "list"
     When I send the request
     Then  I get a 200 status code as response
     And I verify the response schema with List
+    
