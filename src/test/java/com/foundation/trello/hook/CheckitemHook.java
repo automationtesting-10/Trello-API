@@ -37,7 +37,7 @@ public class CheckitemHook {
         String idChecklist = context.getMapIds().get("idChecklist");
         String id = context.getMapIds().containsKey("idCheckItem")
                 ? context.getMapIds().get("idCheckItem") : context.getMapIds().get("id");
-        String endPoint = "/checklists/"+idChecklist +"/checkItems/".concat(id);
+        String endPoint = "/checklists/" + idChecklist + "/checkItems/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -52,7 +52,7 @@ public class CheckitemHook {
     @Before(order = 5, value = "@create-checkitem")
     public void beforeScenario() {
         String idChecklist = context.getMapIds().get("idChecklist");
-        String endPoint = "/checklists/"+ idChecklist+"/checkItems";
+        String endPoint = "/checklists/" + idChecklist + "/checkItems";
         String method = "post";
         String name = NamesGenerator.newName();
         String data = "{ \"name\":\"" + name + "\" }";

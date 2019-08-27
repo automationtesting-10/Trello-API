@@ -15,7 +15,15 @@ Feature: Functional tests of "label"
     Examples: labels with valid colors
       | color  |
       | yellow |
+      | purple |
+      | blue   |
+      | red    |
+      | green  |
+      | orange |
       | black  |
+      | sky    |
+      | pink   |
+      | lime   |
       | null   |
 
   @create-board @create-label @delete-label @delete-board
