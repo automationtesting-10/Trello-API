@@ -32,7 +32,7 @@ public final class CardHook {
     /**
      * Makes a request for delete a Card by id.
      */
-    @After(order = 1, value = "@delete-card")
+    @After(order = 2, value = "@delete-card")
     public void afterScenario() {
         String id = context.getMapIds().containsKey("idCard")
                 ? context.getMapIds().get("idCard") : context.getMapIds().get("id");

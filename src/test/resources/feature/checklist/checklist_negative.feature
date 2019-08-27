@@ -5,7 +5,6 @@ Feature: Negative test of "checklist"
     Given I create a GET request to /checklists/{idChecklist}/abc123 endpoint
     When I send the request
     Then I get a 404 status code as response
-    And I verify the response schema with Checklist
 
 
   Scenario: Create new checklist with a wrong idCard
@@ -19,13 +18,11 @@ Feature: Negative test of "checklist"
         """
     When I send the request
     Then I get a 400 status code as response
-    And  I verify the response schema with Checklist
 
   Scenario: Read a checklist by a wrong idCheckList
     Given I create a GET request to /checklists/abc123 endpoint
     When I send the request
     Then I get a 400 status code as response
-    And I verify the response schema with Checklist
 
   Scenario: Update checklist's name with a wrong idCheckList
     Given I create a PUT request to /checklists/abc123 endpoint
@@ -37,7 +34,6 @@ Feature: Negative test of "checklist"
         """
     When I send the request
     Then I get a 400 status code as response
-    And I verify the response schema with Checklists
 
   Scenario: Delete a checklist by a wrong IdChecklist
     Given I create a DELETE request to /checklists/abc123 endpoint
@@ -54,7 +50,6 @@ Feature: Negative test of "checklist"
         """
     When I send the request
     Then I get a 400 status code as response
-    And I verify the response schema with Checklists
 
   Scenario: Create new checkItem with a wrong idCheckList
     Given I create a POST request to /checklists/123abc/checkItems endpoint
@@ -66,25 +61,21 @@ Feature: Negative test of "checklist"
         """
     When I send the request
     Then I get a 400 status code as response
-    And  I verify the response schema with Checklist
 
   @create-board @create-list @create-card @create-checklist @delete-checklist @delete-card @delete-board
   Scenario: Read a checklist Board by Id with a wrong field
     Given I create a GET request to /checklists/{idChecklist}/boards endpoint
     When I send the request
     Then I get a 404 status code as response
-    And I verify the response schema with Checklist
 
   @create-board @create-list @create-card @create-checklist @delete-checklist @delete-card @delete-board
   Scenario: Read a checklist Card by Id with a wrong field
     Given I create a GET request to /checklists/{idChecklist}/Card endpoint
     When I send the request
     Then I get a 404 status code as response
-    And I verify the response schema with Checklist
 
   @create-board @create-list @create-card @create-checklist @delete-checklist @delete-card @delete-board
   Scenario: Read all the CheckItems of a checkList by Id with a wrong field
     Given I create a GET request to /checklists/{idChecklist}/checkitem endpoint
     When I send the request
     Then I get a 404 status code as response
-    And I verify the response schema with Checklist

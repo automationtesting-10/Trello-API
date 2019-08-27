@@ -12,13 +12,11 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then I get a 400 status code as response
-    And I verify the response schema with Label
 
   Scenario: Read a label by a wrong id
     Given I create a GET request to /labels/123abc endpoint
     When I send the request
     Then I get a 400 status code as response
-    And I verify the response schema with Label
 
   Scenario: Update a label name with a wrong idLabel
     Given I create a PUT request to /labels/123abc endpoint
@@ -30,13 +28,11 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then  I get a 400 status code as response
-    And I verify the response schema with Label
 
   Scenario: Delete label by a wrong id
     Given I create a DELETE request to /labels/123abc endpoint
     When I send the request
     Then I get a 400 status code as response
-    And I verify the response schema with Label
 
   Scenario: Update a label color with a wrong idLabel
     Given I create a PUT request to /labels/123abc/color endpoint
@@ -48,7 +44,6 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then  I get a 400 status code as response
-    And I verify the response schema with Label
 
   Scenario: Update a label name with a wrong idLabel
     Given I create a PUT request to /labels/123abc/name endpoint
@@ -60,7 +55,6 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then  I get a 400 status code as response
-    And I verify the response schema with Label
 
   @create-board @create-label @delete-label @delete-board
   Scenario: Update a label color with a wrong field
@@ -73,7 +67,6 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then  I get a 404 status code as response
-    And I verify the response schema with Label
 
   @create-board @create-label @delete-label @delete-board
   Scenario: Update a label name with a wrong field
@@ -86,4 +79,3 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then  I get a 404 status code as response
-    And I verify the response schema with Label

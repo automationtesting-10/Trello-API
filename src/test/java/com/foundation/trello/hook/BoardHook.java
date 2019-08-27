@@ -32,7 +32,7 @@ public final class BoardHook {
     /**
      * Makes a request for delete a Board by id.
      */
-    @After(order = 2, value = "@delete-board")
+    @After(order = 4, value = "@delete-board")
     public void afterScenario() {
         String id = context.getMapIds().containsKey("idBoard")
                 ? context.getMapIds().get("idBoard") : context.getMapIds().get("id");
