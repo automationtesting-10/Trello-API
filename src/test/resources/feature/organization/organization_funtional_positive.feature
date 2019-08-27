@@ -1,4 +1,4 @@
-Feature: Functional positive test of Board CUD's (Create, Update and Delete)
+Feature: Functional positive test of Organization CUD's (Create, Update and Delete)
 
   @delete-board
   Scenario Outline: Create a new Organization
