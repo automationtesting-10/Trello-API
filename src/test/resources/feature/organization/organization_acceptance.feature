@@ -39,3 +39,4 @@ Feature: Acceptance test of "organization", CRUD's(Create, Read, Update and Dele
     Given I create a DELETE request to /organizations/{idOrganization} endpoint
     When I send the request
     Then I get a 200 status code as response
+    
