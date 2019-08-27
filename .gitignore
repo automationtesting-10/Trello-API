@@ -6,6 +6,7 @@
 *.iml
 build
 out
+config.properties
 
 # Compiled class file
 *.class

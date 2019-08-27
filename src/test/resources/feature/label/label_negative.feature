@@ -79,3 +79,16 @@ Feature: Negative test of "label"
       """
     When I send the request
     Then  I get a 404 status code as response
+
+  @create-board @create-label @delete-label @delete-board
+  Scenario: Update a label color with a wrong color
+    Given I create a PUT request to /labels/{idLabel}/color endpoint
+    And I set up the data:
+      """
+        {
+          "value": "calipso"
+        }
+      """
+    When I send the request
+    Then  I get a 400 status code as response
+    And I verify the response schema with Label

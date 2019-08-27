@@ -82,7 +82,7 @@ public class ManagerStepDef {
      */
     @Then("I get a {int} status code as response")
     public void getStatusCodeAsResponse(int statusCode) {
-        Assert.assertEquals(statusCode, response.getStatusCode());
+        Assert.assertEquals(response.getStatusCode(), statusCode);
     }
 
     /**
