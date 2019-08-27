@@ -61,5 +61,6 @@ public final class BoardHook {
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
         context.getMapIds().put("idBoard", response.jsonPath().get("id"));
+        context.getMapIds().put("idBoardNotValid", "5d5157ebc6ea6c0553aa6900");
     }
 }
