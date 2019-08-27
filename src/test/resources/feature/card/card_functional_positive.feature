@@ -123,8 +123,7 @@ Feature: Functional test for "card"
     Examples: new name for checklist
     |name               |
     |New name CheckList |
-
-
+    
 # DELETE OF CARD
   @create-board @create-list @create-card @create-action @delete-card @delete-board
   Scenario: Delete a comment
