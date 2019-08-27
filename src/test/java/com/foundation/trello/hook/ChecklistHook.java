@@ -32,7 +32,7 @@ public class ChecklistHook {
     /**
      * Makes a request for delete a Checklist by id.
      */
-    @After("@delete-checklist")
+    @After(order = 1, value = "@delete-checklist")
     public void afterScenario() {
         String id = context.getMapIds().containsKey("idChecklist")
                 ? context.getMapIds().get("idChecklist") : context.getMapIds().get("id");

@@ -10,12 +10,12 @@ import io.cucumber.java.Before;
 import io.restassured.response.Response;
 
 /**
- * BoardHook class create the tagger hooks for the steps.
+ * CheckitemHook class create the tagger hooks for the steps.
  *
- * @author Raul Choque
+ * @author Maday Alcala.
  * @version 0.0.1
  */
-public final class BoardHook {
+public class CheckitemHook {
     private Context context;
     private Response response;
     private RequestManagerAbstract requestManager;
@@ -25,18 +25,19 @@ public final class BoardHook {
      *
      * @param context initializes context attribute.
      */
-    public BoardHook(Context context) {
+    public CheckitemHook(Context context) {
         this.context = context;
     }
 
     /**
-     * Makes a request for delete a Board by id.
+     * Makes a request for delete a Checkitem by id.
      */
-    @After(order = 4, value = "@delete-board")
+    @After(order = 1, value = "@delete-checkitem")
     public void afterScenario() {
-        String id = context.getMapIds().containsKey("idBoard")
-                ? context.getMapIds().get("idBoard") : context.getMapIds().get("id");
-        String endPoint = "/boards/".concat(id);
+        String idChecklist = context.getMapIds().get("idChecklist");
+        String id = context.getMapIds().containsKey("idCheckItem")
+                ? context.getMapIds().get("idCheckItem") : context.getMapIds().get("id");
+        String endPoint = "/checklists/" + idChecklist + "/checkItems/".concat(id);
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
@@ -46,21 +47,21 @@ public final class BoardHook {
     }
 
     /**
-     * Makes a request for create a Board.
+     * Makes a request for create a Checkitem.
      */
-    @Before(order = 1, value = "@create-board")
+    @Before(order = 5, value = "@create-checkitem")
     public void beforeScenario() {
-        String endPoint = "/boards/";
+        String idChecklist = context.getMapIds().get("idChecklist");
+        String endPoint = "/checklists/" + idChecklist + "/checkItems";
         String method = "post";
         String name = NamesGenerator.newName();
-        String data = "{ \"name\":\"" + name + "\"}";
+        String data = "{ \"name\":\"" + name + "\" }";
         requestManager = FactoryRequest.getRequest(method);
         requestManager.setMethod(method);
         requestManager.setEndPoint(endPoint);
         requestManager.setData(data);
         response = requestManager.makeRequest();
         Log.getInstance().getLog().info(response);
-        context.getMapIds().put("idBoard", response.jsonPath().get("id"));
-        context.getMapIds().put("idBoardNotValid", "5d5157ebc6ea6c0553aa6900");
+        context.getMapIds().put("idCheckItem", response.jsonPath().get("id"));
     }
 }
