@@ -6,7 +6,7 @@ Feature: Functional test for "card"
 #    When I send the request
 #    Then I get a 200 status code as response
 
-  @create-board @create-list @create-card @delete-board
+  @create-board @create-list @create-card @delete-card @delete-board
   Scenario: List the actions on a card
     Given I create a GET request to /cards/{idCard}/actions endpoint
     When I send the request
@@ -18,79 +18,80 @@ Feature: Functional test for "card"
     When I send the request
     Then I get a 200 status code as response
 
-#  Scenario: Get a specific attachment on a card
-#    Given I create a GET request to /cards/{id}/attachments/{idAttachment} endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the board a card is on
-#    Given I create a GET request to /cards/{id}/board endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the completed checklist items on a card
-#    Given I create a GET request to /cards/{id}/checkItemStates endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the checklists on a card
-#    Given I create a GET request to /cards/{id}/checklists endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get a specific checkItem on a card
-#    Given I create a GET request to /cards/{id}/checkItem/{idCheckItem} endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the custom field items for a card
-#    Given I create a GET request to /cards/{id}/customFieldItems endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the list a card is in
-#    Given I create a GET request to /cards/{id}/list endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the members on a card
-#    Given I create a GET request to /cards/{id}/members endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the members who have voted on a card
-#    Given I create a GET request to /cards/{id}/membersVoted endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get any shared pluginData on a card
-#    Given I create a GET request to /cards/{id}/pluginData endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get the stickers on a card
-#    Given I create a GET request to /cards/{id}/stickers endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Get a specific sticker on a card
-#    Given I create a GET request to /cards/{id}/stickers/{idSticker} endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-## PUT FOR CARD
-#  Scenario: Update a card
-#    Given I create a PUT request to https://api.trello.com/1/cards/{idCard} endpoint
-#      And I set up the data:
-#        """
-#          {
-#            "name":"[New card with the new name]"
-#          }
-#        """
-#    When I send the request
-#    Then I get a 200 status code as response
-#      And I verify the response schema with Card
-#
+  @create-board @create-list @create-card @create-action @delete-action @delete-card @delete-board
+  Scenario: Get a specific attachment on a card
+    Given I create a GET request to /cards/{idCard}/attachments/{idAttachment} endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the board a card is on
+    Given I create a GET request to /cards/{idCard}/board endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the completed checklist items on a card
+    Given I create a GET request to /cards/{idCard}/checkItemStates endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the checklists on a card
+    Given I create a GET request to /cards/{idCard}/checklists endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get a specific checkItem on a card
+    Given I create a GET request to /cards/{idCard}/checkItem/{idCheckItem} endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the custom field items for a card
+    Given I create a GET request to /cards/{idCard}/customFieldItems endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the list a card is in
+    Given I create a GET request to /cards/{idCard}/list endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the members on a card
+    Given I create a GET request to /cards/{idCard}/members endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the members who have voted on a card
+    Given I create a GET request to /cards/{idCard}/membersVoted endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get any shared pluginData on a card
+    Given I create a GET request to /cards/{idCard}/pluginData endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the stickers on a card
+    Given I create a GET request to /cards/{idCard}/stickers endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get a specific sticker on a card
+    Given I create a GET request to /cards/{idCard}/stickers/{idSticker} endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+# PUT FOR CARD
+
   @create-board @create-list @create-card @create-action @delete-action @delete-board
   Scenario: Update an existing comment
     Given I create a PUT request to /cards/{idCard}/actions/{idAction}/comments endpoint
@@ -103,29 +104,31 @@ Feature: Functional test for "card"
     When I send the request
     Then I get a 200 status code as response
 
-#  Scenario: Update an item in a checklist on a card.
-#    Given I create a PUT request to /cards/{id}/checkItem/{idCheckItem} endpoint
-#      And I set up the data:
-#          """
-#            {
-#              "name":"New commentary"
-#            }
-#          """
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-#  Scenario: Update a sticker on a card
-#    Given I create a PUT request to /cards/{id}/stickers/{idSticker} endpoint
-#      And I set up the data:
-#            """
-#              {
-#                "rotate":60
-#              }
-#            """
-#    When I send the request
-#    Then I get a 200 status code as response
-#
-##POST OF CARD
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Update an item in a checklist on a card.
+    Given I create a PUT request to /cards/{idCard}/checkItem/{idCheckItem} endpoint
+      And I set up the data:
+          """
+            {
+              "name":"New commentary"
+            }
+          """
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Update a sticker on a card
+    Given I create a PUT request to /cards/{id}/stickers/{idSticker} endpoint
+      And I set up the data:
+            """
+              {
+                "rotate":60
+              }
+            """
+    When I send the request
+    Then I get a 200 status code as response
+
+#POST OF CARD
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Add a new comment to a card
     Given I create a POST request to /cards/{idCard}/actions/comments endpoint
@@ -138,19 +141,20 @@ Feature: Functional test for "card"
     When I send the request
     Then I get a 200 status code as response
 
-#   Scenario: Add an attachment to a card
-#     Given I create a POST request to /cards/{id}/attachments endpoint
-#       And I set up the data:
-#                """
-#                  {
-#                    "name":"New comments"
-#                    "file":""
-#                    "mimeType":""
-#                    "url":""
-#                  }
-#                """
-#     When I send the request
-#     Then I get a 200 status code as response
+  @create-board @create-list @create-card @delete-card @delete-board
+   Scenario: Add an attachment to a card
+     Given I create a POST request to /cards/{idCard}/attachments endpoint
+       And I set up the data:
+                """
+                  {
+                    "name":"New comments"
+                    "file":""
+                    "mimeType":""
+                    "url":""
+                  }
+                """
+     When I send the request
+     Then I get a 200 status code as response
 #
 #  Scenario: Create a new checklist on a card
 #    Given I create a POST request to /cards/{id}/checklists endpoint
@@ -229,12 +233,13 @@ Feature: Functional test for "card"
 #    Then I get a 200 status code as response
 #
 ## DELETE OF CARD
-#
-#  Scenario: Delete a comment
-#    Given I create a DELETE request to /cards/{id}/actions/{idAction}/comments endpoint
-#    When I set up the data:
-#    Then I get a 200 status code as response
-#
+
+  @create-board @create-list @create-card @create-action @delete-card @delete-board
+  Scenario: Delete a comment
+    Given I create a DELETE request to /cards/{idCard}/actions/{idAction}/comments endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
 #  Scenario: Delete an attachment
 #    Given I create a DELETE request to /cards/{id}/attachments/{idAttachment} endpoint
 #    When I set up the data:

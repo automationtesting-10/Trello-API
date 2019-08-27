@@ -24,14 +24,12 @@ public class ActionsHook {
     }
 
     /**
-     * Makes a request for delete a Card by id.
+     * Makes a request for delete a Action by id.
      */
     @After("@delete-action")
     public void afterScenario() {
         String idCard = context.getMapIds().get("idCard");
         String idAction = context.getMapIds().get("idAction");
-//        String id = context.getMapIds().containsKey("idAction")
-//                ? context.getMapIds().get("idAction") : context.getMapIds().get("id");
         String endPoint = "/cards/"+idCard+"/actions/"+idAction+"/comments";
         String method = "delete";
         requestManager = FactoryRequest.getRequest(method);
@@ -42,7 +40,7 @@ public class ActionsHook {
     }
 
     /**
-     * Makes a request for create a Card.
+     * Makes a request for create a Action.
      */
     @Before(order = 4, value = "@create-action")
     public void beforeScenario() {
