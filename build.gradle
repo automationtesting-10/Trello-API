@@ -41,7 +41,7 @@ task cucumber() {
         javaexec {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--plugin', 'html:target/cucumber', '--plugin', 'json:target/cucumber.json', '--glue', 'com/foundation/trello', 'src/test/resources']
+            args = ['--plugin', 'pretty', '--plugin', 'html:target/cucumber', '--plugin', 'json:target/cucumber.json', '--glue', 'com/foundation/trello', 'src/test/resources/feature']
         }
     }
 }
@@ -102,8 +102,11 @@ tasks.withType(Pmd) {
         html.enabled = true
     }
 }
+
 cucumberReports {
     outputDir = file('target/cucumber')
     buildId = '0'
     reports = files('target/cucumber.json')
 }
+
+generateCucumberReports.dependsOn(cucumber)
