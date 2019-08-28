@@ -3,6 +3,7 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
+import com.foundation.trello.model.request.RequestPost;
 import com.foundation.trello.util.NamesGenerator;
 
 import com.foundation.trello.util.Regex;
@@ -46,8 +47,7 @@ public class ManagerStepDef {
     @Given("I create a ([[GET][POST][DELETE][PUT]]+) request to (.*) endpoint")
     public void iCreateRequest(String method, String endPoint) {
         requestManager = FactoryRequest.getRequest(method);
-        requestManager.setMethod(method);
-        context.getMapIds();
+//        requestManager.setMethod(method);
         String completeEndPoint = Regex.getInstance().replaceID(endPoint, context.getMapIds());
         requestManager.setEndPoint(completeEndPoint);
     }
@@ -71,8 +71,10 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
-        context.getMapIds().put("id", id);
+        if (requestManager instanceof RequestPost){
+            String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
+            context.getMapIds().put("id", id);
+        }
     }
 
     /**

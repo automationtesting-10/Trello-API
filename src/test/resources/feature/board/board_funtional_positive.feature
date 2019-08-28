@@ -281,3 +281,68 @@ Feature: Functional positive test of Board CUD's (Create, Update and Delete)
     | b                                 |
     | new labelNames/blue with big name |
     | 1$b*                              |
+
+  @create-board @create-list @delete-board
+  Scenario: Read the lists from a Board
+    Given I create a GET request to /boards/{idBoard}/lists endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Read the cards from a Board
+    Given I create a GET request to /boards/{idBoard}/cards endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @create-label @delete-label @delete-card @delete-board
+  Scenario: Read the labels from a Board
+    Given I create a GET request to /boards/{idBoard}/labels endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @create-checklist @delete-checklist @delete-card @delete-board
+  Scenario: Read the checklists from a Board
+    Given I create a GET request to /boards/{idBoard}/checklists endpoint
+    When I send the request
+    Then I get a 200 status code as response
+
+  @create-board @create-list @create-card @delete-label @delete-card @delete-board
+  Scenario Outline: Create a label from a Board
+    Given I create a POST request to /boards/{idBoard}/labels endpoint
+      And I set up the data:
+      """
+        {
+           "name":"[<name_label>]",
+           "color":"<color_name>"
+        }
+        """
+    When I send the request
+    Then I get a 200 status code as response
+
+    Examples: board with labelNames value updating
+    | name_label    | color_name |
+    | name label    | green      |
+    | name label    | yellow     |
+    | name label    | orange     |
+    | name label    | red        |
+    | name label    | purple     |
+    | name label    | blue       |
+
+  @create-board @create-list @create-card @delete-label @delete-card @delete-board
+  Scenario Outline: Create a list from a Board
+    Given I create a POST request to /boards/{idBoard}/lists endpoint
+    And I set up the data:
+      """
+        {
+           "name":"[<name_List>]"
+        }
+        """
+    When I send the request
+    Then I get a 200 status code as response
+
+    Examples: board with labelNames/blue value updating
+      | name_List              |
+      | l                      |
+      | new list with big name |
+      | 7$b*                   |
