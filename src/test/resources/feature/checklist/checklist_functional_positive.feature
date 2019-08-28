@@ -39,7 +39,7 @@ Feature: Functional tests of "checklist"
         """
     When I send the request
     Then I get a 200 status code as response
-    And I verify the response schema with Checklists
+    And I verify the response schema with Checklist
     Examples: checklist with valid names
       | name                                        |
       | a                                           |

@@ -268,7 +268,7 @@
     },
     "due": {
       "$id": "#/properties/due",
-      "type": "date",
+      "type": "string",
       "title": "The Due Schema",
       "default": "",
       "examples": [
