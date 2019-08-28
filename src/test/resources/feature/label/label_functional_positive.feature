@@ -32,7 +32,7 @@ Feature: Functional tests of "label"
     And I set up the data:
       """
         {
-          "value": "[<name_checkitem>]"
+          "value": "<name_checkitem>"
         }
       """
     When I send the request

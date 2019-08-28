@@ -32,7 +32,7 @@ Feature: Acceptance test of "checklist", CRUD's(Create, Read, Update and Delete)
         """
     When I send the request
     Then I get a 200 status code as response
-    And I verify the response schema with Checklists
+    And I verify the response schema with Checklist
 
   @create-board @create-list @create-card @create-checklist @delete-card @delete-board
   Scenario: Delete a checklist by Id

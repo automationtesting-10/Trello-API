@@ -74,6 +74,8 @@ dependencies {
     compile 'io.rest-assured:json-schema-validator:4.0.0'
     // This dependency help us to generate aleatory names.
     implementation 'com.github.javafaker:javafaker:1.0.1'
+    // This dependency help us to validate schemas.
+    compile group: 'org.everit.json', name: 'org.everit.json.schema', version: '1.5.1'
 }
 
 checkstyle {

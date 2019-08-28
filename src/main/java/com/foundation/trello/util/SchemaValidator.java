@@ -1,8 +1,14 @@
 package com.foundation.trello.util;
 
 import io.restassured.response.Response;
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.ValidationException;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * This class validates the schema of a request response.
@@ -14,26 +20,37 @@ public final class SchemaValidator {
     /**
      * This method constructor initializes the variables.
      */
-    private SchemaValidator() {
+    public SchemaValidator() {
     }
 
     /**
      * This method validates the right schemaJson of the response for a request.
      *
      * @param response   The response parameter defines the input response obtained for a request.
-     * @param schemaName The schemaJson parameter defines the input schemaJson obtaned of a "<File>.json"
+     * @param schemaName The schemaJson parameter defines the input schemaJson obtained of a "<File>.json"
      * @return a boolean that represent the response validation.
      */
-    public static boolean validator(Response response, String schemaName) {
-        boolean result = false;
-        String schemaPath = "schemaJson/" + schemaName + "Schema.json";
-        try {
-            response.then().assertThat().body(matchesJsonSchemaInClasspath(schemaPath));
-            result = true;
-            Log.getInstance().getLog().info("The json is valid");
-        } catch (Exception e) {
-            Log.getInstance().getLog().error("The json is not valid", e);
+    public boolean validator(Response response, String schemaName) {
+        InputStream inputStream = null;
+        try  {
+            inputStream = getClass().getClassLoader().getResourceAsStream("schema/" + schemaName.concat("Schema.json"));
+            JSONObject jsonObject = new JSONObject(new JSONTokener(inputStream));
+            Schema schema = SchemaLoader.load(jsonObject);
+            schema.validate(new JSONObject(response.jsonPath().getMap("$")));
+            Log.getInstance().getLog().info("Validation Passed " + jsonObject);
+            return true;
+        } catch (ValidationException ex) {
+            Log.getInstance().getLog().info(ex);
+            return false;
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    Log.getInstance().getLog().info("Validation Failed " + e);
+                    e.printStackTrace();
+                }
+            }
         }
-        return result;
     }
 }
