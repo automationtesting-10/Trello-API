@@ -3,8 +3,8 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
+import com.foundation.trello.model.request.RequestPost;
 import com.foundation.trello.util.NamesGenerator;
-
 import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
 import cucumber.api.java.en.And;
@@ -12,7 +12,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-import org.testng.annotations.AfterClass;
 import org.testng.asserts.SoftAssert;
 
 /**
@@ -26,6 +25,7 @@ public class ManagerStepDef {
     private Response response;
     private SoftAssert softAssert;
     private Context context;
+    private SchemaValidator schemaValidator;
 
     /**
      * This method constructor initializes variables.
@@ -69,8 +69,10 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
-        context.getMapIds().put("id", id);
+        if (requestManager instanceof RequestPost) {
+            String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
+            context.getMapIds().put("id", id);
+        }
     }
 
     /**
@@ -92,26 +94,9 @@ public class ManagerStepDef {
      */
     @And("I verify the response schema with (.*)")
     public void iGetASchema(String schemaName) {
-        boolean validator = SchemaValidator.validator(response, schemaName);
+        schemaValidator = new SchemaValidator();
+        boolean validator = schemaValidator.validator(response, schemaName);
         softAssert = new SoftAssert();
         softAssert.assertTrue(validator);
-    }
-
-    /**
-     * This method is in charge of clean after the class.
-     */
-    @AfterClass
-    public void afterClass() {
-        context.setId(null);
-    }
-
-    /**
-     * This method is used for send the request to the API.
-     */
-    @When("I send a request")
-    public void iSendARequest() {
-        response = requestManager.makeRequest();
-        String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("[0].id") : "";
-        context.getMapIds().put("id", id);
     }
 }
