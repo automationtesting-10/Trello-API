@@ -27,13 +27,13 @@ Feature: Functional test for "card"
   @create-board @create-list @create-card @create-checklist @delete-checklist @delete-card @delete-board
   Scenario: Get the checklists on a card
     Given I create a GET request to /cards/{idCard}/checklists endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get the custom field items for a card
     Given I create a GET request to /cards/{idCard}/customFieldItems endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @delete-card @delete-board
@@ -45,25 +45,25 @@ Feature: Functional test for "card"
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get the members on a card
     Given I create a GET request to /cards/{idCard}/members endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get the members who have voted on a card
     Given I create a GET request to /cards/{idCard}/membersVoted endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get any shared pluginData on a card
     Given I create a GET request to /cards/{idCard}/pluginData endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get the stickers on a card
     Given I create a GET request to /cards/{idCard}/stickers endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
     
   @create-board @create-list @create-card @create-action @delete-action @delete-board
@@ -117,7 +117,7 @@ Feature: Functional test for "card"
   @create-board @create-list @create-card @create-checklist @delete-card @delete-board
   Scenario: Delete a checklist from a card
     Given I create a DELETE request to /cards/{idCard}/checklists/{idChecklist} endpoint
-    When I send a request
+    When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @create-label @delete-card @delete-board
