@@ -40,13 +40,13 @@ Feature: Functional positive test of Board CUD's (Create, Update and Delete)
   @delete-board
   Scenario Outline: Create a new Board with and without list
     Given I create a POST request to /boards/ endpoint
-    And I set up the data:
-      """
-        {
-           "name":"[<name_board>]",
-           "defaultLists":<default_lists>
-        }
+      And I set up the data:
         """
+          {
+             "name":"[<name_board>]",
+             "defaultLists":<default_lists>
+          }
+          """
     When I send the request
     Then I get a 200 status code as response
     And  I verify the response schema with Board
