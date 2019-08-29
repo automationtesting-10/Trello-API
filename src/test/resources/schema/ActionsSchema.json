@@ -1,0 +1,274 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "array",
+  "title": "The Root Schema",
+  "items": {
+    "$id": "#/items",
+    "type": "object",
+    "title": "The Items Schema",
+    "required": [
+      "id",
+      "idMemberCreator",
+      "data",
+      "type",
+      "date",
+      "memberCreator"
+    ],
+    "properties": {
+      "id": {
+        "$id": "#/items/properties/id",
+        "type": "string",
+        "title": "The Id Schema",
+        "default": "",
+        "examples": [
+          "561f43cf9ee2b14c75583e6e"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "idMemberCreator": {
+        "$id": "#/items/properties/idMemberCreator",
+        "type": "string",
+        "title": "The Idmembercreator Schema",
+        "default": "",
+        "examples": [
+          "561f394aeb6a4b033754060e"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "data": {
+        "$id": "#/items/properties/data",
+        "type": "object",
+        "title": "The Data Schema",
+        "required": [
+          "list",
+          "board",
+          "card",
+          "text"
+        ],
+        "properties": {
+          "list": {
+            "$id": "#/items/properties/data/properties/list",
+            "type": "object",
+            "title": "The List Schema",
+            "required": [
+              "name",
+              "id"
+            ],
+            "properties": {
+              "name": {
+                "$id": "#/items/properties/data/properties/list/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "Info"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "id": {
+                "$id": "#/items/properties/data/properties/list/properties/id",
+                "type": "string",
+                "title": "The Id Schema",
+                "default": "",
+                "examples": [
+                  "53f4c48a94f780435b611ce9"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "board": {
+            "$id": "#/items/properties/data/properties/board",
+            "type": "object",
+            "title": "The Board Schema",
+            "required": [
+              "shortLink",
+              "name",
+              "id"
+            ],
+            "properties": {
+              "shortLink": {
+                "$id": "#/items/properties/data/properties/board/properties/shortLink",
+                "type": "string",
+                "title": "The Shortlink Schema",
+                "default": "",
+                "examples": [
+                  "nC8QJJoZ"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "name": {
+                "$id": "#/items/properties/data/properties/board/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "Trello Development"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "id": {
+                "$id": "#/items/properties/data/properties/board/properties/id",
+                "type": "string",
+                "title": "The Id Schema",
+                "default": "",
+                "examples": [
+                  "4d5ea62fd76aa1136000000c"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "card": {
+            "$id": "#/items/properties/data/properties/card",
+            "type": "object",
+            "title": "The Card Schema",
+            "required": [
+              "shortLink",
+              "idShort",
+              "name",
+              "id"
+            ],
+            "properties": {
+              "shortLink": {
+                "$id": "#/items/properties/data/properties/card/properties/shortLink",
+                "type": "string",
+                "title": "The Shortlink Schema",
+                "default": "",
+                "examples": [
+                  "NIRpzVDM"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "idShort": {
+                "$id": "#/items/properties/data/properties/card/properties/idShort",
+                "type": "integer",
+                "title": "The Idshort Schema",
+                "default": 0,
+                "examples": [
+                  1211
+                ]
+              },
+              "name": {
+                "$id": "#/items/properties/data/properties/card/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "What can you expect from this board?"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "id": {
+                "$id": "#/items/properties/data/properties/card/properties/id",
+                "type": "string",
+                "title": "The Id Schema",
+                "default": "",
+                "examples": [
+                  "4f7dcc310113192a307f347d"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "text": {
+            "$id": "#/items/properties/data/properties/text",
+            "type": "string",
+            "title": "The Text Schema",
+            "default": "",
+            "examples": [
+              "Looking Forward to new support`"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      },
+      "type": {
+        "$id": "#/items/properties/type",
+        "type": "string",
+        "title": "The Type Schema",
+        "default": "",
+        "examples": [
+          "commentCard"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "date": {
+        "$id": "#/items/properties/date",
+        "type": "string",
+        "title": "The Date Schema",
+        "default": "",
+        "examples": [
+          "2015-10-15T06:12:31.822Z"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "memberCreator": {
+        "$id": "#/items/properties/memberCreator",
+        "type": "object",
+        "title": "The Membercreator Schema",
+        "required": [
+          "id",
+          "avatarHash",
+          "fullName",
+          "initials",
+          "username"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#/items/properties/memberCreator/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "561f394aeb6a4b033754060e"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "avatarHash": {
+            "$id": "#/items/properties/memberCreator/properties/avatarHash",
+            "type": "string",
+            "title": "The Avatarhash Schema",
+            "default": "",
+            "examples": [
+              "f3d899950817ffcf32ca671cb793809d"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "fullName": {
+            "$id": "#/items/properties/memberCreator/properties/fullName",
+            "type": "string",
+            "title": "The Fullname Schema",
+            "default": "",
+            "examples": [
+              "Eric Chen"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "initials": {
+            "$id": "#/items/properties/memberCreator/properties/initials",
+            "type": "string",
+            "title": "The Initials Schema",
+            "default": "",
+            "examples": [
+              "EC"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "username": {
+            "$id": "#/items/properties/memberCreator/properties/username",
+            "type": "string",
+            "title": "The Username Schema",
+            "default": "",
+            "examples": [
+              "ericchen76"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}

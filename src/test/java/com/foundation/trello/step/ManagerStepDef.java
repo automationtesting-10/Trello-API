@@ -12,7 +12,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.testng.asserts.SoftAssert;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * ManagerStepDef class.
@@ -69,7 +74,8 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        if (requestManager instanceof RequestPost) {
+        String bodyAsString = response.getBody().asString();
+        if(bodyAsString.charAt(0) != '[') {
             String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
             context.getMapIds().put("id", id);
         }
