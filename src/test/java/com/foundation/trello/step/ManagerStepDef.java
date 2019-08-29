@@ -65,7 +65,6 @@ public class ManagerStepDef {
         String aleatoryName = data.replaceAll("\\[(.*?)\\]", NamesGenerator.newName());
         requestManager.setData(aleatoryName);
         String completeData = Regex.getInstance().replaceID(data, context.getMapIds());
-
         requestManager.setData(completeData);
     }
 

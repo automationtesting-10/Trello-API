@@ -19,13 +19,6 @@ Feature: Functional test for "card"
     When I send the request
     Then I get a 200 status code as response
 
-#  @create-board @create-list @create-card @create-action @delete-action @delete-card @delete-board
-#  Scenario: Get a specific attachment on a card
-#    Given I create a GET request to /cards/{idCard}/attachments/{idAttachment} endpoint
-#    When I send the request
-#    Then I get a 200 status code as response
-#      And  I verify the response schema with Card
-
   @create-board @create-list @create-card @delete-card @delete-board
   Scenario: Get the board a card is on
     Given I create a GET request to /cards/{idCard}/board endpoint
@@ -86,11 +79,11 @@ Feature: Functional test for "card"
   Scenario Outline: Update an existing comment
     Given I create a PUT request to /cards/{idCard}/actions/{idAction}/comments endpoint
     And I set up the data:
-        """
-          {
-            "text":"<text>"
-          }
-        """
+      """
+        {
+          "text":"<text>"
+        }
+      """
     When I send the request
     Then I get a 200 status code as response
     And  I verify the response schema with Card
@@ -102,11 +95,11 @@ Feature: Functional test for "card"
   Scenario: Add a new comment to a card
     Given I create a POST request to /cards/{idCard}/actions/comments endpoint
     And I set up the data:
-              """
-                {
-                  "text":"this is a comments for card"
-                }
-              """
+      """
+        {
+          "text":"this is a comments for card"
+        }
+      """
     When I send the request
     Then I get a 200 status code as response
 
@@ -114,11 +107,11 @@ Feature: Functional test for "card"
   Scenario Outline: Create a new checklist on a card
     Given I create a POST request to /cards/{idCard}/checklists endpoint
     And I set up the data:
-                  """
-                    {
-                      "name":"<name>"
-                    }
-                  """
+      """
+        {
+          "name":"<name>"
+        }
+      """
     When I send the request
     Then I get a 200 status code as response
     Examples: new name for checklist
@@ -129,16 +122,16 @@ Feature: Functional test for "card"
   Scenario: Add a label to a card
     Given I create a POST request to /cards/{idCard}/idLabels endpoint
     And I set up the data:
-                  """
-                    {
-                      "value":"{idLabel}"
-                    }
-                  """
+      """
+        {
+          "value":"{idLabel}"
+        }
+      """
     When I send the request
     Then I get a 200 status code as response
 
   @create-board @create-list @create-card @create-action @delete-card @delete-board
-  Scenario: Delete a comment
+  Scenario: Delete a comment of the an actions
     Given I create a DELETE request to /cards/{idCard}/actions/{idAction}/comments endpoint
     When I send the request
     Then I get a 200 status code as response
