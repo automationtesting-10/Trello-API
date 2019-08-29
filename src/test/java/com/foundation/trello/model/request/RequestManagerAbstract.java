@@ -16,6 +16,15 @@ public abstract class RequestManagerAbstract {
     private String method;
 
     /**
+     * Created a protected initializeValue to define empty values.
+     */
+    protected void initializeValue() {
+        this.endPoint = "";
+        this.data = "";
+        this.method = "";
+    }
+
+    /**
      * Sets endPoint attribute.
      *
      * @param endPoint is new value for set endPoint attribute.

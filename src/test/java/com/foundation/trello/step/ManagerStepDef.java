@@ -3,7 +3,6 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
-import com.foundation.trello.model.request.RequestPost;
 import com.foundation.trello.util.NamesGenerator;
 import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
@@ -69,7 +68,8 @@ public class ManagerStepDef {
     @When("I send the request")
     public void sentRequest() {
         response = requestManager.makeRequest();
-        if (requestManager instanceof RequestPost) {
+        String bodyAsString = response.getBody().asString();
+        if (bodyAsString.charAt(0) != '[') {
             String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
             context.getMapIds().put("id", id);
         }

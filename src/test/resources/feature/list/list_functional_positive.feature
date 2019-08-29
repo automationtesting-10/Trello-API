@@ -1,11 +1,15 @@
 Feature: Functional test of "list"
 
   @create-board @create-list @delete-board
-  Scenario: Read a field of a list by Id
-    Given I create a GET request to /list/{idList}/name endpoint
+  Scenario Outline: Read a field of a list by Id
+    Given I create a GET request to /list/{idList}/<field> endpoint
     When I send the request
     Then I get a 200 status code as response
     And I verify the response schema with List
+    Examples: list with valid fields
+    | field |
+    | name  |
+    | pos   |
 
   @create-board @create-list @delete-board
   Scenario: Read a board of a list by Id
@@ -91,4 +95,10 @@ Feature: Functional test of "list"
     When I send the request
     Then  I get a 200 status code as response
     And I verify the response schema with List
-    
+
+  @create-board @create-list @create-card @delete-board
+  Scenario: Archive all cards in a list
+    Given I create a POST request to /lists/{idList}/archiveAllCards endpoint
+    When I send the request
+    Then I get a 200 status code as response
+    And I verify the response schema with List

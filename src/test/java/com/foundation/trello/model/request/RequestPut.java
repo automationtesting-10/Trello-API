@@ -14,6 +14,13 @@ import static io.restassured.http.ContentType.JSON;
 public class RequestPut extends RequestManagerAbstract {
 
     /**
+     * Call the method initializeValue from RequestManagerAbstract class.
+     */
+    public RequestPut() {
+        super.initializeValue();
+    }
+
+    /**
      * Makes a put request and returns its response.
      *
      * @return a Response of a put request.
