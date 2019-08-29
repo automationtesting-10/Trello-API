@@ -3,7 +3,6 @@ package com.foundation.trello.step;
 import com.foundation.trello.model.Context;
 import com.foundation.trello.model.request.FactoryRequest;
 import com.foundation.trello.model.request.RequestManagerAbstract;
-import com.foundation.trello.model.request.RequestPost;
 import com.foundation.trello.util.NamesGenerator;
 import com.foundation.trello.util.Regex;
 import com.foundation.trello.util.SchemaValidator;
@@ -12,12 +11,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.testng.asserts.SoftAssert;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * ManagerStepDef class.
@@ -75,7 +69,7 @@ public class ManagerStepDef {
     public void sentRequest() {
         response = requestManager.makeRequest();
         String bodyAsString = response.getBody().asString();
-        if(bodyAsString.charAt(0) != '[') {
+        if (bodyAsString.charAt(0) != '[') {
             String id = response.getStatusCode() == 200 ? response.body().jsonPath().get("id") : "";
             context.getMapIds().put("id", id);
         }

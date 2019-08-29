@@ -14,6 +14,13 @@ import static io.restassured.http.ContentType.JSON;
 public class RequestPost extends RequestManagerAbstract {
 
     /**
+     * Call the method initializeValue from RequestManagerAbstract class.
+     */
+    public RequestPost() {
+        super.initializeValue();
+    }
+
+    /**
      * Makes a post request and returns its response.
      *
      * @return a Response of a post request.
