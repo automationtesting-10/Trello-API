@@ -13,6 +13,13 @@ import static io.restassured.RestAssured.given;
 public class RequestGet extends RequestManagerAbstract {
 
     /**
+     * Call the method initializeValue from RequestManagerAbstract class.
+     */
+    public RequestGet() {
+        super.initializeValue();
+    }
+
+    /**
      * Makes a get request and returns its response.
      *
      * @return a Response of a get request.
