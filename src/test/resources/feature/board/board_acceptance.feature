@@ -11,7 +11,14 @@ Feature: Acceptance test of "board", CRUD's(Create, Read, Update and Delete)
         """
     When I send the request
     Then I get a 200 status code as response
-      And  I verify the response schema with Board
+      And  I verify the response schema with board
+
+  @create-board @create-list @create-card @delete-card @delete-board
+  Scenario: Get the members on a card
+    Given I create a GET request to /cards/{idCard}/members endpoint
+    When I send the request
+    Then I get a 200 status code as response
+    And  I verify the response schema with Card
 
   @create-board @delete-board
   Scenario: Read a board by Id
