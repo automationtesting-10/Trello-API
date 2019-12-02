@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "checkItems": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "nameData": {
+              "type": "null"
+            },
+            "pos": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "state",
+            "id",
+            "name",
+            "nameData",
+            "pos"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "nameData": {
+              "type": "null"
+            },
+            "pos": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "state",
+            "id",
+            "name",
+            "nameData",
+            "pos"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "nameData": {
+              "type": "null"
+            },
+            "pos": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "state",
+            "id",
+            "name",
+            "nameData",
+            "pos"
+          ]
+        }
+      ]
+    },
+    "cards": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "checkItems",
+    "cards"
+  ]
+}

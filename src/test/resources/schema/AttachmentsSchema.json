@@ -1,0 +1,199 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "array",
+  "title": "The Root Schema",
+  "items": {
+    "$id": "#/items",
+    "type": "object",
+    "title": "The Items Schema",
+    "required": [
+      "id",
+      "bytes",
+      "date",
+      "edgeColor",
+      "idMember",
+      "isUpload",
+      "mimeType",
+      "name",
+      "previews",
+      "url",
+      "pos"
+    ],
+    "properties": {
+      "id": {
+        "$id": "#/items/properties/id",
+        "type": "string",
+        "title": "The Id Schema",
+        "default": "",
+        "examples": [
+          "58e801c30f51ca01a6dd6745"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "bytes": {
+        "$id": "#/items/properties/bytes",
+        "type": "integer",
+        "title": "The Bytes Schema",
+        "default": 0,
+        "examples": [
+          62103
+        ]
+      },
+      "date": {
+        "$id": "#/items/properties/date",
+        "type": "string",
+        "title": "The Date Schema",
+        "default": "",
+        "examples": [
+          "2017-04-07T21:16:51.346Z"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "edgeColor": {
+        "$id": "#/items/properties/edgeColor",
+        "type": "string",
+        "title": "The Edgecolor Schema",
+        "default": "",
+        "examples": [
+          "#f0e9f1"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "idMember": {
+        "$id": "#/items/properties/idMember",
+        "type": "string",
+        "title": "The Idmember Schema",
+        "default": "",
+        "examples": [
+          "57f2789b32d54fa10d99beb6"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "isUpload": {
+        "$id": "#/items/properties/isUpload",
+        "type": "boolean",
+        "title": "The Isupload Schema",
+        "default": false,
+        "examples": [
+          true
+        ]
+      },
+      "mimeType": {
+        "$id": "#/items/properties/mimeType",
+        "type": "null",
+        "title": "The Mimetype Schema",
+        "default": null,
+        "examples": [
+          null
+        ]
+      },
+      "name": {
+        "$id": "#/items/properties/name",
+        "type": "string",
+        "title": "The Name Schema",
+        "default": "",
+        "examples": [
+          "Screen Shot 2017-04-07 at 5.14.55 PM.png"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "previews": {
+        "$id": "#/items/properties/previews",
+        "type": "array",
+        "title": "The Previews Schema",
+        "items": {
+          "$id": "#/items/properties/previews/items",
+          "type": "object",
+          "title": "The Items Schema",
+          "required": [
+            "bytes",
+            "url",
+            "height",
+            "width",
+            "_id",
+            "scaled"
+          ],
+          "properties": {
+            "bytes": {
+              "$id": "#/items/properties/previews/items/properties/bytes",
+              "type": "integer",
+              "title": "The Bytes Schema",
+              "default": 0,
+              "examples": [
+                1811
+              ]
+            },
+            "url": {
+              "$id": "#/items/properties/previews/items/properties/url",
+              "type": "string",
+              "title": "The Url Schema",
+              "default": "",
+              "examples": [
+                "https://trello-attachments.s3.amazonaws.com/58e800aa9ebaaa01c586f630/70x50/e5ef494a0044dd7cd6b73c19955c8cfa/Screen_Shot_2017-04-07_at_5.14.55_PM.png"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "height": {
+              "$id": "#/items/properties/previews/items/properties/height",
+              "type": "integer",
+              "title": "The Height Schema",
+              "default": 0,
+              "examples": [
+                50
+              ]
+            },
+            "width": {
+              "$id": "#/items/properties/previews/items/properties/width",
+              "type": "integer",
+              "title": "The Width Schema",
+              "default": 0,
+              "examples": [
+                70
+              ]
+            },
+            "_id": {
+              "$id": "#/items/properties/previews/items/properties/_id",
+              "type": "string",
+              "title": "The _id Schema",
+              "default": "",
+              "examples": [
+                "58e801c4456b715c478e1e42"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "scaled": {
+              "$id": "#/items/properties/previews/items/properties/scaled",
+              "type": "boolean",
+              "title": "The Scaled Schema",
+              "default": false,
+              "examples": [
+                false
+              ]
+            }
+          }
+        }
+      },
+      "url": {
+        "$id": "#/items/properties/url",
+        "type": "string",
+        "title": "The Url Schema",
+        "default": "",
+        "examples": [
+          "https://trello-attachments.s3.amazonaws.com/4d5ea62fd76aa1136000000c/58e800aa9ebaaa01c586f630/1619f1fcd3065c9a2bccd318e9b7a154/Screen_Shot_2017-04-07_at_5.14.55_PM.png"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "pos": {
+        "$id": "#/items/properties/pos",
+        "type": "integer",
+        "title": "The Pos Schema",
+        "default": 0,
+        "examples": [
+          16384
+        ]
+      }
+    }
+  }
+}
